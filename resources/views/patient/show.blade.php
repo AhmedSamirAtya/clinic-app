@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('template_title')
     {{ $patient->name ?? __('Show') . " " . __('Patient') }}

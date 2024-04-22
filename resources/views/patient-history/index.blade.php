@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('template_title')
     Patient History
@@ -16,11 +16,12 @@
                                 {{ __('Patient History') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('patient-histories.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                            <div class="float-right">
+                                <a href="{{ route('patient-histories.create') }}" class="btn btn-primary btn-sm float-right"
+                                    data-placement="left">
+                                    {{ __('Create New') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -35,9 +36,9 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Patient Id</th>
-										<th>Prescription Id</th>
+
+                                        <th>Patient Id</th>
+                                        <th>Prescription Id</th>
 
                                         <th></th>
                                     </tr>
@@ -45,18 +46,24 @@
                                 <tbody>
                                     @foreach ($patientHistories as $patientHistory)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $patientHistory->patient_id }}</td>
-											<td>{{ $patientHistory->prescription_id }}</td>
+                                            <td>{{ $patientHistory->id }}</td>
+
+                                            <td>{{ $patientHistory->patient->name }}</td>
+                                            <td>{{ $patientHistory->prescription->diagnosis }}</td>
 
                                             <td>
-                                                <form action="{{ route('patient-histories.destroy',$patientHistory->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('patient-histories.show',$patientHistory->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('patient-histories.edit',$patientHistory->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('patient-histories.destroy', $patientHistory->id) }}"
+                                                    method="POST">
+                                                    <a class="btn btn-sm btn-primary "
+                                                        href="{{ route('patient-histories.show', $patientHistory->id) }}"><i
+                                                            class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success"
+                                                        href="{{ route('patient-histories.edit', $patientHistory->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

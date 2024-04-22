@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('template_title')
     Prescription
@@ -16,11 +16,12 @@
                                 {{ __('Prescription') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('prescriptions.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                            <div class="float-right">
+                                <a href="{{ route('prescriptions.create') }}" class="btn btn-primary btn-sm float-right"
+                                    data-placement="left">
+                                    {{ __('Create New') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -35,10 +36,10 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Patient Id</th>
-										<th>Doctor Id</th>
-										<th>Diagnosis</th>
+
+                                        <th>Patient</th>
+                                        <th>Doctor</th>
+                                        <th>Diagnosis</th>
 
                                         <th></th>
                                     </tr>
@@ -46,19 +47,25 @@
                                 <tbody>
                                     @foreach ($prescriptions as $prescription)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $prescription->patient_id }}</td>
-											<td>{{ $prescription->doctor_id }}</td>
-											<td>{{ $prescription->diagnosis }}</td>
+                                            <td>{{ $prescription->id }}</td>
+
+                                            <td>{{ $prescription->patient->name }}</td>
+                                            <td>{{ $prescription->doctor->name }}</td>
+                                            <td>{{ $prescription->diagnosis }}</td>
 
                                             <td>
-                                                <form action="{{ route('prescriptions.destroy',$prescription->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('prescriptions.show',$prescription->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('prescriptions.edit',$prescription->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('prescriptions.destroy', $prescription->id) }}"
+                                                    method="POST">
+                                                    <a class="btn btn-sm btn-primary "
+                                                        href="{{ route('prescriptions.show', $prescription->id) }}"><i
+                                                            class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success"
+                                                        href="{{ route('prescriptions.edit', $prescription->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

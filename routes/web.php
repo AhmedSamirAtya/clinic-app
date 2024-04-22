@@ -14,6 +14,7 @@ use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RoleUserController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,13 +30,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-
-
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/{page}',  [AdminController::class, 'index']);
 //Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
@@ -49,3 +43,10 @@ Route::resource('medicines', MedicineController::class);
 Route::resource('prescriptions', PrescriptionController::class);
 Route::resource('patient-histories', PatientHistoryController::class);
 Route::resource('role-users', RoleUserController::class);
+Route::resource('doctors', DoctorController::class);
+
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/{page}',  [AdminController::class, 'index']);

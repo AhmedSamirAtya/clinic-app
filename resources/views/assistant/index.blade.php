@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('template_title')
     Assistant
@@ -16,11 +16,12 @@
                                 {{ __('Assistant') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('assistants.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                            <div class="float-right">
+                                <a href="{{ route('assistants.create') }}" class="btn btn-primary btn-sm float-right"
+                                    data-placement="left">
+                                    {{ __('Create New') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -35,8 +36,8 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>User Id</th>
+
+                                        <th>User Id</th>
 
                                         <th></th>
                                     </tr>
@@ -44,17 +45,23 @@
                                 <tbody>
                                     @foreach ($assistants as $assistant)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $assistant->user_id }}</td>
+                                            <td>{{ $assistant->id }}</td>
+
+                                            <td>{{ $assistant->user->name }}</td>
 
                                             <td>
-                                                <form action="{{ route('assistants.destroy',$assistant->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('assistants.show',$assistant->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('assistants.edit',$assistant->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('assistants.destroy', $assistant->id) }}"
+                                                    method="POST">
+                                                    <a class="btn btn-sm btn-primary "
+                                                        href="{{ route('assistants.show', $assistant->id) }}"><i
+                                                            class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success"
+                                                        href="{{ route('assistants.edit', $assistant->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

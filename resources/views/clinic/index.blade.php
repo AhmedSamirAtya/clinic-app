@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('template_title')
     Clinic
@@ -44,7 +44,7 @@
                                 <tbody>
                                     @foreach ($clinics as $clinic)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $clinic->id }}</td>
                                             
 											<td>{{ $clinic->name }}</td>
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('template_title')
     Role User
@@ -16,11 +16,12 @@
                                 {{ __('Role User') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('role-users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                            <div class="float-right">
+                                <a href="{{ route('role-users.create') }}" class="btn btn-primary btn-sm float-right"
+                                    data-placement="left">
+                                    {{ __('Create New') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -35,9 +36,9 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>User Id</th>
-										<th>Role Id</th>
+
+                                        <th>User Id</th>
+                                        <th>Role Id</th>
 
                                         <th></th>
                                     </tr>
@@ -45,18 +46,24 @@
                                 <tbody>
                                     @foreach ($roleUsers as $roleUser)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $roleUser->user_id }}</td>
-											<td>{{ $roleUser->role_id }}</td>
+                                            <td>{{ $roleUser->id }}</td>
+
+                                            <td>{{ $roleUser->user->name }}</td>
+                                            <td>{{ $roleUser->role->name }}</td>
 
                                             <td>
-                                                <form action="{{ route('role-users.destroy',$roleUser->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('role-users.show',$roleUser->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('role-users.edit',$roleUser->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('role-users.destroy', $roleUser->id) }}"
+                                                    method="POST">
+                                                    <a class="btn btn-sm btn-primary "
+                                                        href="{{ route('role-users.show', $roleUser->id) }}"><i
+                                                            class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success"
+                                                        href="{{ route('role-users.edit', $roleUser->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

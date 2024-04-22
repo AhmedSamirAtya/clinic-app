@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('template_title')
     {{ $location->name ?? __('Show') . " " . __('Location') }}

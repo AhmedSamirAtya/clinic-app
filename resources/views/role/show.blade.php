@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('template_title')
     {{ $role->name ?? __('Show') . " " . __('Role') }}

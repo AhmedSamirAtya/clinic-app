@@ -26,7 +26,7 @@ class RoleUser extends Model
 
 
     protected $perPage = 20;
-
+    protected $table = 'role_user';
     /**
      * Attributes that should be mass-assignable.
      *

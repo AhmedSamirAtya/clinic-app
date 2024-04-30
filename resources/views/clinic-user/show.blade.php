@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('template_title')
-    {{ $roleUser->name ?? __('Show') . " " . __('Role User') }}
+    {{ $clinicUser->name ?? __('Show') . " " . __('Clinic User') }}
 @endsection
 
 @section('content')
@@ -11,22 +11,22 @@
                 <div class="card">
                     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Role User</span>
+                            <span class="card-title">{{ __('Show') }} Clinic User</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('role-users.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('clinic-users.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body bg-white">
                         
                         <div class="form-group mb-2 mb20">
-                            <strong>User Id:</strong>
-                            {{ $roleUser->user_id }}
+                            <strong>Clinic Id:</strong>
+                            {{ $clinicUser->clinic_id }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Role Id:</strong>
-                            {{ $roleUser->role_id }}
+                            <strong>User Id:</strong>
+                            {{ $clinicUser->user_id }}
                         </div>
 
                     </div>

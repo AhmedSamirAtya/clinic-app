@@ -15,7 +15,8 @@ return new class extends Migration
                 $table->id();
                 $table->string('name');
                 $table->text('description')->nullable();
-                $table->string('dosage');
+                $table->string('unit')->default('tabs');
+                $table->string('concentration');
                 $table->softDeletes();
                 $table->timestamps();
             });

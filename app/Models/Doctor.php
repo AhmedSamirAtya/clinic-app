@@ -11,12 +11,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property $id
  * @property $user_id
  * @property $specialization
+ * @property $date_of_birth
  * @property $deleted_at
  * @property $created_at
  * @property $updated_at
  *
  * @property User $user
- * @property ClinicDoctor[] $clinicDoctors
+ * @property ClinicUser[] $clinicDoctors
  * @property Prescription[] $prescriptions
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -24,41 +25,26 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Doctor extends Model
 {
     use SoftDeletes;
-
-
     protected $perPage = 20;
+    protected $fillable = ['user_id', 'specialization', 'date_of_birth'];
+    static $rules = [
+        'user_id' => 'required',
+        'specialization' => 'required|string',
+        'date_of_birth' => 'required',
+    ];
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['user_id', 'specialization'];
-
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
     }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function clinicDoctors()
+
+    public function clinicUsers()
     {
-        return $this->hasMany(\App\Models\ClinicDoctor::class, 'id', 'doctor_id');
+        return $this->hasMany(\App\Models\ClinicUser::class, 'id', 'doctor_id');
     }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+
     public function prescriptions()
     {
         return $this->hasMany(\App\Models\Prescription::class, 'id', 'doctor_id');
     }
-    
-
 }

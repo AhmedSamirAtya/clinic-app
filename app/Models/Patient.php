@@ -9,15 +9,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Class Patient
  *
  * @property $id
- * @property $user_id
+ * @property $name
+ * @property $job
  * @property $address
+ * @property $age_in_month
+ * @property $phone_number
  * @property $deleted_at
  * @property $created_at
  * @property $updated_at
  *
- * @property User $user
+ * @property Appointment[] $appointments
  * @property PatientHistory[] $patientHistories
- * @property Prescription[] $prescriptions
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -33,15 +35,15 @@ class Patient extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'address'];
+    protected $fillable = ['name', 'job', 'address', 'age_in_month', 'phone_number'];
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function user()
+    public function appointments()
     {
-        return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
+        return $this->hasMany(\App\Models\Appointment::class, 'id', 'patient_id');
     }
     
     /**
@@ -50,14 +52,6 @@ class Patient extends Model
     public function patientHistories()
     {
         return $this->hasMany(\App\Models\PatientHistory::class, 'id', 'patient_id');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function prescriptions()
-    {
-        return $this->hasMany(\App\Models\Prescription::class, 'id', 'patient_id');
     }
     
 

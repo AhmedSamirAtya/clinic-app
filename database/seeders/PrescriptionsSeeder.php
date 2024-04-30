@@ -12,8 +12,6 @@ class PrescriptionsSeeder extends Seeder
         $ids = [6, 7, 8, 9, 10];
         for ($i = 0; $i < 5; $i++) {
             DB::table('prescriptions')->insert([
-                'patient_id' => $ids[$i],
-                'doctor_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

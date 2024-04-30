@@ -22,8 +22,11 @@ class PatientRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'user_id' => 'required',
+			'name' => 'required|string',
+			'job' => 'string',
 			'address' => 'string',
+			'age_in_month' => 'required',
+			'phone_number' => 'required|string',
         ];
     }
 }

@@ -14,7 +14,7 @@ class RolesSeeder extends Seeder
     public function run(): void
     {
         
-        $roles = ['Admin', 'Doctor', 'Assistant', 'Nurse', 'Patient'];
+        $roles = ['SUPER_ADMIN','ADMIN', 'DOCTOR', 'ASSISTANT', 'NURSE', 'PATIENT', 'TECHNICION'];
         for ($i = 0; $i < count($roles); $i++) {
             DB::table('roles')->insert([
                 'name' => $roles[$i],

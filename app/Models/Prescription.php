@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Class Prescription
  *
  * @property $id
- * @property $patient_id
- * @property $doctor_id
+ * @property $appointment_id
  * @property $diagnosis
  * @property $deleted_at
  * @property $created_at
@@ -35,17 +34,17 @@ class Prescription extends Model
      *
      * @var array
      */
-    protected $fillable = ['patient_id', 'doctor_id', 'diagnosis'];
+    protected $fillable = ['appointment_id', 'diagnosis'];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function doctor()
+    public function appointment()
     {
-        return $this->belongsTo(\App\Models\Doctor::class, 'doctor_id', 'id');
+        return $this->belongsTo(\App\Models\Appointment::class, 'appointment_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -53,7 +52,7 @@ class Prescription extends Model
     {
         return $this->belongsTo(\App\Models\Patient::class, 'patient_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -61,7 +60,7 @@ class Prescription extends Model
     {
         return $this->hasMany(\App\Models\MedicinePrescription::class, 'id', 'prescription_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -69,6 +68,4 @@ class Prescription extends Model
     {
         return $this->hasMany(\App\Models\PatientHistory::class, 'id', 'prescription_id');
     }
-    
-
 }

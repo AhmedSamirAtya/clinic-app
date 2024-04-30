@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('assistants', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->date('date_of_birth');
             $table->softDeletes();
             $table->timestamps();
 

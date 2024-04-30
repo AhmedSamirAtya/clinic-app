@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('template_title')
-    Role User
+    Appointment
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Role User') }}
+                                {{ __('Appointment') }}
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('role-users.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('appointments.create') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
@@ -37,28 +37,31 @@
                                     <tr>
                                         <th>No</th>
 
-                                        <th>User Id</th>
-                                        <th>Role Id</th>
-
+                                        <th>Patient Id</th>
+                                        <th>Doctor Id</th>
+                                        <th>Appointment Datetime</th>
+                                        <th>Type</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($roleUsers as $roleUser)
+                                    @foreach ($appointments as $appointment)
                                         <tr>
-                                            <td>{{ $roleUser->id }}</td>
+                                            <td>{{ $appointment->id }}</td>
 
-                                            <td>{{ $roleUser->user->name }}</td>
-                                            <td>{{ $roleUser->role->name }}</td>
+                                            <td>{{ $appointment->patient->name }}</td>
+                                            <td>{{ $appointment->doctor->user->name }}</td>
+                                            <td>{{ $appointment->appointment_datetime }}</td>
+                                            <td>{{ $appointment->type }}</td>
 
                                             <td>
-                                                <form action="{{ route('role-users.destroy', $roleUser->id) }}"
+                                                <form action="{{ route('appointments.destroy', $appointment->id) }}"
                                                     method="POST">
                                                     <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('role-users.show', $roleUser->id) }}"><i
+                                                        href="{{ route('appointments.show', $appointment->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success"
-                                                        href="{{ route('role-users.edit', $roleUser->id) }}"><i
+                                                        href="{{ route('appointments.edit', $appointment->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
@@ -73,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $roleUsers->links() !!}
+                {!! $appointments->links() !!}
             </div>
         </div>
     </div>

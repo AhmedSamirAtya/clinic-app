@@ -6,50 +6,52 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class RoleUser
+ * Class Appointment
  *
  * @property $id
- * @property $user_id
- * @property $role_id
+ * @property $patient_id
+ * @property $doctor_id
+ * @property $clinic_id
+ * @property $appointment_datetime
+ * @property $type
+ * @property $reson
  * @property $deleted_at
  * @property $created_at
  * @property $updated_at
  *
- * @property Role $role
- * @property User $user
+ * @property Doctor $doctor
+ * @property Patient $patient
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class RoleUser extends Model
+class Appointment extends Model
 {
     use SoftDeletes;
 
 
     protected $perPage = 20;
-    protected $table = 'role_user';
+
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'role_id'];
+    protected $fillable = ['patient_id', 'doctor_id', 'clinic_id', 'appointment_datetime', 'type', 'reason'];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function role()
+    public function doctor()
     {
-        return $this->belongsTo(\App\Models\Role::class, 'role_id', 'id');
+        return $this->belongsTo(\App\Models\Doctor::class, 'doctor_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function patient()
     {
-        return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
+        return $this->belongsTo(\App\Models\Patient::class, 'patient_id', 'id');
     }
-    
-
 }

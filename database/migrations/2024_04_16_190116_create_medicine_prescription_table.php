@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('medicine_id');
             $table->unsignedBigInteger('prescription_id');
-            $table->integer('quantity');
+            $table->string('dose');
+            $table->integer('duration_in_days');
             $table->softDeletes();
             $table->timestamps();
 

@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property $id
  * @property $name
  * @property $description
- * @property $dosage
+ * @property $unit
+ * @property $concentration
  * @property $deleted_at
  * @property $created_at
  * @property $updated_at
@@ -32,7 +33,7 @@ class Medicine extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'dosage'];
+    protected $fillable = ['name', 'description', 'unit', 'concentration'];
 
 
     /**

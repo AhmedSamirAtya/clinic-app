@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('template_title')
-    {{ __('Create') }} Role User
+    {{ __('Create') }} Clinic User
 @endsection
 
 @section('content')
@@ -11,13 +11,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Role User</span>
+                        <span class="card-title">{{ __('Create') }} Clinic User</span>
                     </div>
                     <div class="card-body bg-white">
-                        <form method="POST" action="{{ route('role-users.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('clinic-users.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('role-user.form')
+                            @include('clinic-user.form')
 
                         </form>
                     </div>

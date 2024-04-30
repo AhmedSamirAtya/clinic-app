@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Http\Requests\DoctorRequest;
+use App\Http\Requests\UserRequest;
+use App\Models\ClinicUser;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class DoctorController
@@ -34,17 +39,30 @@ class DoctorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(DoctorRequest $request)
+    public function store(UserRequest $request)
     {
-        Doctor::create($request->validated());
+        $hasPassword = Hash::make($request->password);
+        $request->merge([
+            'password' => $hasPassword,
+            'role_id' => 3,
+
+        ]);
+        $user = User::create($request->all());
+        Doctor::create([
+            'user_id' => $user->id,
+            'specialization' => $request->specialization,
+            'date_of_birth' => $request->date_of_birth
+        ]);
+
+        ClinicUser::create([
+            'user_id' => $user->id,
+            'clinic_id' => $request->clinic_id
+        ]);
 
         return redirect()->route('doctors.index')
             ->with('success', 'Doctor created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         $doctor = Doctor::find($id);
@@ -62,12 +80,11 @@ class DoctorController extends Controller
         return view('doctor.edit', compact('doctor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(DoctorRequest $request, Doctor $doctor)
     {
-        $doctor->update($request->validated());
+        $user = User::find($request->user_id);
+        $user->update($request->all());
+        $doctor->update($request->all());
 
         return redirect()->route('doctors.index')
             ->with('success', 'Doctor updated successfully');

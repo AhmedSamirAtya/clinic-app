@@ -16,7 +16,7 @@ class MedicinesSeeder extends Seeder
             DB::table('medicines')->insert([
                 'name' => $faker->word,
                 'description' => $faker->sentence,
-                'dosage' => $faker->sentence,
+                'concentration' => '25mg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

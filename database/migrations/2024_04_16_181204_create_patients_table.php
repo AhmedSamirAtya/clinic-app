@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->string('name');
+            $table->string('job')->nullable();
             $table->string('address')->nullable();
+            $table->unsignedSmallInteger('age_in_month');
+            $table->string('phone_number')->unique();
             $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -36,8 +36,11 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>User Id</th>
+										<th>Name</th>
+										<th>Job</th>
 										<th>Address</th>
+										<th>Age In Month</th>
+										<th>Phone Number</th>
 
                                         <th></th>
                                     </tr>
@@ -47,8 +50,11 @@
                                         <tr>
                                             <td>{{ $patient->id }}</td>
                                             
-											<td>{{ $patient->user->name }}</td>
+											<td>{{ $patient->name }}</td>
+											<td>{{ $patient->job }}</td>
 											<td>{{ $patient->address }}</td>
+											<td>{{ $patient->age_in_month }}</td>
+											<td>{{ $patient->phone_number }}</td>
 
                                             <td>
                                                 <form action="{{ route('patients.destroy',$patient->id) }}" method="POST">

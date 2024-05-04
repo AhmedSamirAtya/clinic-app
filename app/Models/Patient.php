@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * Class Patient
@@ -12,8 +17,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property $name
  * @property $job
  * @property $address
- * @property $age_in_month
  * @property $phone_number
+ * @property $date_of_birth
+ * @property $email
+ * @property $email_verified_at
+ * @property $password
+ * @property $remember_token
  * @property $deleted_at
  * @property $created_at
  * @property $updated_at
@@ -23,9 +32,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Patient extends Model
+class Patient extends Authenticatable implements MustVerifyEmail
 {
-    use SoftDeletes;
+    use SoftDeletes, HasApiTokens, HasFactory, Notifiable;
 
 
     protected $perPage = 20;
@@ -35,7 +44,7 @@ class Patient extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'job', 'address', 'age_in_month', 'phone_number'];
+    protected $fillable = ['name', 'job', 'address', 'phone_number', 'date_of_birth', 'email'];
 
 
     /**

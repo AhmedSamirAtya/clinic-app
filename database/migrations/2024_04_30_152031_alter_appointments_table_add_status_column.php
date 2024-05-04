@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('appointments', function (Blueprint $table) {
             // Add a new column
-            $table->enum('status',['Scheduled', 'Confirmed', 'InProgress', 'Completed', 'Cancelled', 'NoShow', 'Rescheduled'])->default('Scheduled');
+            $table->enum('status', ['scheduled', 'confirmed', 'inProgress', 'completed', 'cancelled', 'noShow', 'rescheduled'])->default('scheduled');
         });
     }
 

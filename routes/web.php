@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AssistantController;
 use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\ClinicDoctorController;
 use App\Http\Controllers\ClinicUserController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
@@ -50,11 +51,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('doctors', DoctorController::class);
     Route::resource('appointments', AppointmentController::class);
     Route::resource('clinic-users', ClinicUserController::class);
+    Route::resource('clinic-doctors', ClinicDoctorController::class);
+    Route::resource('doctors', DoctorController::class);
 
-    
+    //Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
 
     Route::get('/{page}',  [AdminController::class, 'index']);
 });
+
+
 Route::get('/', function () {
     return view('index');
 });
+
+require __DIR__ . '/doctors.php';

@@ -22,18 +22,11 @@ class DoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'user_id' => 'required',
+			'name' => 'required|string',
 			'specialization' => 'required|string',
-            'date_of_birth' => 'required',
-        ];
-    }
-
-    public function messages()
-    {   
-        return [
-            'user_id.required' => 'user id is required',
-            'specialization.required' => 'specialization is required',
-            'date_of_birth.required' => 'date_of_birth factor Id is required',
+			'date_of_birth' => 'required',
+			'phone_number' => 'required|string',
+			'email' => 'required|string',
         ];
     }
 }

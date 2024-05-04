@@ -4,47 +4,71 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * Class Doctor
  *
  * @property $id
- * @property $user_id
+ * @property $name
  * @property $specialization
  * @property $date_of_birth
+ * @property $phone_number
+ * @property $email
+ * @property $email_verified_at
+ * @property $password
+ * @property $remember_token
  * @property $deleted_at
  * @property $created_at
  * @property $updated_at
  *
- * @property User $user
- * @property ClinicUser[] $clinicDoctors
- * @property Prescription[] $prescriptions
+ * @property Appointment[] $appointments
+ * @property ClinicDoctor[] $clinicDoctors
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Doctor extends Model
+class Doctor extends Authenticatable
 {
-    use SoftDeletes;
+    use SoftDeletes, HasApiTokens, HasFactory, Notifiable;
+
+
     protected $perPage = 20;
-    protected $fillable = ['user_id', 'specialization', 'date_of_birth'];
-    static $rules = [
-        'user_id' => 'required',
+
+    protected $fillable = ['name', 'specialization', 'date_of_birth', 'phone_number', 'email', 'password'];
+
+    static $rules  = [
+        'name' => 'required|string',
         'specialization' => 'required|string',
-        'date_of_birth' => 'required',
+        'date_of_birth' => 'required|date',
+        'phone_number' => 'required|string',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|string|min:8',
     ];
 
-    public function user()
+    static $messages =  [
+        'name.required' => 'Please enter your name.',
+        'specialization.required' => 'Please specify your specialization.',
+        'date_of_birth.required' => 'Please provide your date of birth.',
+        'date_of_birth.date' => 'Date of birth must be a valid date format.',
+        'phone_number.required' => 'Please enter your phone number.',
+        'email.required' => 'Please enter your email address.',
+        'email.email' => 'Please enter a valid email address.',
+        'email.unique' => 'This email address is already registered.',
+        'password.required' => 'Please enter a password.',
+        'password.min' => 'Password must be at least 8 characters long.',
+    ];
+
+    public function appointments()
     {
-        return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
+        return $this->hasMany(\App\Models\Appointment::class, 'id', 'doctor_id');
     }
 
-    public function clinicUsers()
+    public function clinicDoctors()
     {
-        return $this->hasMany(\App\Models\ClinicUser::class, 'id', 'doctor_id');
-    }
-
-    public function prescriptions()
-    {
-        return $this->hasMany(\App\Models\Prescription::class, 'id', 'doctor_id');
+        return $this->hasMany(\App\Models\ClinicDoctor::class, 'id', 'doctor_id');
     }
 }

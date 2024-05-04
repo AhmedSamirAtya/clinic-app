@@ -16,8 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('job')->nullable();
             $table->string('address')->nullable();
-            $table->unsignedSmallInteger('age_in_month');
             $table->string('phone_number')->unique();
+            $table->date('date_of_birth');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
         });

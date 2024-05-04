@@ -12,15 +12,12 @@ class LocationsSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-
-        for ($i = 0; $i < 2; $i++) {
-            DB::table('locations')->insert([
-                'clinic_id' => $i+1,
-                'city' => $faker->city,
-                'address' => $faker->address,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        DB::table('locations')->insert([
+            'clinic_id' => 1,
+            'city' => 'المحله الكبرى',
+            'address' => 'تقاطع شارع البهى مع شارع المستشار',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

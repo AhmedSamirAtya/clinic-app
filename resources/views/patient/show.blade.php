@@ -33,12 +33,16 @@
                             {{ $patient->address }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Age In Month:</strong>
-                            {{ $patient->age_in_month }}
-                        </div>
-                        <div class="form-group mb-2 mb20">
                             <strong>Phone Number:</strong>
                             {{ $patient->phone_number }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Date Of Birth:</strong>
+                            {{ $patient->date_of_birth }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Email:</strong>
+                            {{ $patient->email }}
                         </div>
 
                     </div>

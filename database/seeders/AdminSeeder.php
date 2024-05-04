@@ -22,7 +22,6 @@ class AdminSeeder extends Seeder
             'phone_number' => '01032596372',
             'email' => 'super@clinics.com',
             'password' => Hash::make('12345678'),
-            'role_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

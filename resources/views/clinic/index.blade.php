@@ -44,7 +44,7 @@
                                 <tbody>
                                     @foreach ($clinics as $clinic)
                                         <tr>
-                                            <td>{{ $clinic->id }}</td>
+                                            <td>{{ ++$i }}</td>
                                             
 											<td>{{ $clinic->name }}</td>
 

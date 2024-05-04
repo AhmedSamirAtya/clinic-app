@@ -23,6 +23,9 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
+            if (Auth::guard($guard)->check() && $guard == 'doctor') {
+                return redirect()->route('doctor.dashboard');
+            }
         }
 
         return $next($request);

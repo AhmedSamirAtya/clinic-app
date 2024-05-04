@@ -16,8 +16,10 @@
                     <div class="card-body bg-white">
                         <form method="POST" action="{{ route('doctors.update', $doctor->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
-                            {{ csrf_field() }}
+                            @csrf
+
                             @include('doctor.form')
+
                         </form>
                     </div>
                 </div>

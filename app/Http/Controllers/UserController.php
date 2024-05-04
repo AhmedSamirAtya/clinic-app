@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
-use App\Models\ClinicUser;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserController
@@ -38,17 +36,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $hasPassword = Hash::make($request->password);
-        $request->merge([
-            'password' => $hasPassword
-        ]);
-        $user = User::create($request->all());
-        if (!isClinicHasAdmin($request->clinic_id)) {
-            ClinicUser::create([
-                'user_id' => $user->id,
-                'clinic_id' => $request->clinic_id
-            ]);
-        }
+        User::create($request->validated());
 
         return redirect()->route('users.index')
             ->with('success', 'User created successfully.');

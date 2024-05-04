@@ -13,12 +13,18 @@ return new class extends Migration
     {
         Schema::create('assistants', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->string('name');
+            $table->unsignedBigInteger('clinic_id');
+            $table->string('address')->nullable();
+            $table->string('phone_number')->unique();
             $table->date('date_of_birth');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('clinic_id')->references('id')->on('clinics')->onDelete('cascade');
         });
     }
 

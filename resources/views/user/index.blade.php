@@ -37,7 +37,7 @@
                                         <th>No</th>
                                         
 										<th>Name</th>
-										<th>Phone</th>
+										<th>Phone Number</th>
 										<th>Email</th>
 
                                         <th></th>
@@ -49,7 +49,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $user->name }}</td>
-											<td>{{ $user->phone }}</td>
+											<td>{{ $user->phone_number }}</td>
 											<td>{{ $user->email }}</td>
 
                                             <td>

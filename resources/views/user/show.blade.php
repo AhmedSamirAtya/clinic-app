@@ -25,8 +25,8 @@
                             {{ $user->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Phone:</strong>
-                            {{ $user->phone }}
+                            <strong>Phone Number:</strong>
+                            {{ $user->phone_number }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Email:</strong>

@@ -3,9 +3,13 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Hash;
+
 
 class DoctorsSeeder extends Seeder
 {
@@ -16,20 +20,16 @@ class DoctorsSeeder extends Seeder
     {
         $faker = Faker::create();
         DB::table('doctors')->insert([
-            'user_id' => 2,
-            'specialization' => $faker->jobTitle,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'name' => 'د.احمد العرابى',
+            'specialization' => 'اطفال وحديثى الولاده ومبتسرين',
+            'date_of_birth' => '1980-05-15',
+            'phone_number' => '0123456789',
+            'email' => 'dr.orabi@clinics.com',
+            'email_verified_at' => Carbon::now(),
+            'password' => Hash::make('12345678'),
+            'remember_token' => str_random(10),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
-        // for ($i = 0; $i < 10; $i++) {
-        //     $user = DB::table('users')->inRandomOrder()->first();
-
-        //     DB::table('doctors')->insert([
-        //         'user_id' => $user->id,
-        //         'specialization' => $faker->jobTitle,
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ]);
-        // }
     }
 }

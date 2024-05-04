@@ -25,8 +25,9 @@ class PatientRequest extends FormRequest
 			'name' => 'required|string',
 			'job' => 'string',
 			'address' => 'string',
-			'age_in_month' => 'required',
 			'phone_number' => 'required|string',
+			'date_of_birth' => 'required',
+			'email' => 'required|string',
         ];
     }
 }

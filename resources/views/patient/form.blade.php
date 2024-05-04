@@ -17,14 +17,19 @@
             {!! $errors->first('address', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
-            <label for="age_in_month" class="form-label">{{ __('Age In Month') }}</label>
-            <input type="text" name="age_in_month" class="form-control @error('age_in_month') is-invalid @enderror" value="{{ old('age_in_month', $patient?->age_in_month) }}" id="age_in_month" placeholder="Age In Month">
-            {!! $errors->first('age_in_month', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-        </div>
-        <div class="form-group mb-2 mb20">
             <label for="phone_number" class="form-label">{{ __('Phone Number') }}</label>
             <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number', $patient?->phone_number) }}" id="phone_number" placeholder="Phone Number">
             {!! $errors->first('phone_number', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+        </div>
+        <div class="form-group mb-2 mb20">
+            <label for="date_of_birth" class="form-label">{{ __('Date Of Birth') }}</label>
+            <input type="text" name="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" value="{{ old('date_of_birth', $patient?->date_of_birth) }}" id="date_of_birth" placeholder="Date Of Birth">
+            {!! $errors->first('date_of_birth', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+        </div>
+        <div class="form-group mb-2 mb20">
+            <label for="email" class="form-label">{{ __('Email') }}</label>
+            <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $patient?->email) }}" id="email" placeholder="Email">
+            {!! $errors->first('email', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
 
     </div>

@@ -36,8 +36,11 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>User</th>
+										<th>Name</th>
 										<th>Specialization</th>
+										<th>Date Of Birth</th>
+										<th>Phone Number</th>
+										<th>Email</th>
 
                                         <th></th>
                                     </tr>
@@ -45,10 +48,13 @@
                                 <tbody>
                                     @foreach ($doctors as $doctor)
                                         <tr>
-                                            <td>{{ $doctor->id }}</td>
+                                            <td>{{ ++$i }}</td>
                                             
-											<td>{{ $doctor->user->name }}</td>
+											<td>{{ $doctor->name }}</td>
 											<td>{{ $doctor->specialization }}</td>
+											<td>{{ $doctor->date_of_birth }}</td>
+											<td>{{ $doctor->phone_number }}</td>
+											<td>{{ $doctor->email }}</td>
 
                                             <td>
                                                 <form action="{{ route('doctors.destroy',$doctor->id) }}" method="POST">

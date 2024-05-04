@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
@@ -15,13 +17,18 @@ class AssistantsSeeder extends Seeder
      */
     public function run(): void
     {
-        $ids = [3, 4];
-        for ($i = 0; $i < 2; $i++) {
             DB::table('assistants')->insert([
-                'user_id' => $ids[$i],
-                'created_at' => now(),
-                'updated_at' => now(),
+                'name' => 'حنان مرزوق',
+                'clinic_id' => 1, // Assuming the clinic ID is 1
+                'address' => 'السبع بنات',
+                'phone_number' => '0111222333',
+                'date_of_birth' => '1990-05-15',
+                'email' => 'hananmrzok@example.com',
+                'email_verified_at' => Carbon::now(),
+                'password' => Hash::make('12345678'),
+                'remember_token' => str_random(10),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
-        }
     }
 }

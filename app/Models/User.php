@@ -17,7 +17,6 @@ use Laravel\Sanctum\HasApiTokens;
  * @property $id
  * @property $name
  * @property $phone_number
- * @property $role_id
  * @property $email
  * @property $email_verified_at
  * @property $password
@@ -26,15 +25,11 @@ use Laravel\Sanctum\HasApiTokens;
  * @property $created_at
  * @property $updated_at
  *
- * @property Assistant[] $assistants
- * @property Doctor[] $doctors
- * @property Nurse[] $nurses
- * @property Patient[] $patients
- * @property RoleUser[] $roleUsers
+ * @property ClinicUser[] $clinicUsers
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use SoftDeletes, HasApiTokens, HasFactory, Notifiable;
 
@@ -46,36 +41,14 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'phone_number', 'email', 'role_id', 'password'];
+    protected $fillable = ['name', 'phone_number', 'email'];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function assistants()
+    public function clinicUsers()
     {
-        return $this->hasMany(\App\Models\Assistant::class, 'id', 'user_id');
-    }
-
-    public function doctors()
-    {
-        return $this->hasMany(\App\Models\Doctor::class, 'id', 'user_id');
-    }
-    public function nurses()
-    {
-        return $this->hasMany(\App\Models\Nurse::class, 'id', 'user_id');
-    }
-
-    public function role()
-    {
-        return $this->hasOne(\App\Models\Role::class, 'id', 'role_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function patients()
-    {
-        return $this->hasMany(\App\Models\Patient::class, 'id', 'user_id');
+        return $this->hasMany(\App\Models\ClinicUser::class, 'id', 'user_id');
     }
 }

@@ -21,12 +21,24 @@
                     <div class="card-body bg-white">
                         
                         <div class="form-group mb-2 mb20">
-                            <strong>User Id:</strong>
-                            {{ $doctor->user_id }}
+                            <strong>Name:</strong>
+                            {{ $doctor->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Specialization:</strong>
                             {{ $doctor->specialization }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Date Of Birth:</strong>
+                            {{ $doctor->date_of_birth }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Phone Number:</strong>
+                            {{ $doctor->phone_number }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Email:</strong>
+                            {{ $doctor->email }}
                         </div>
 
                     </div>

@@ -37,6 +37,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            //\App\Http\Middleware\RedirectIfAuthenticated::class,
+
         ],
 
         'api' => [
@@ -66,5 +68,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'IsDoctor' => \App\Http\Middleware\IsDoctor::class,
+        'IsPatient' => \App\Http\Middleware\IsPatient::class,
+        'RedirectIfAuthenticated' => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ];
 }

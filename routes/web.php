@@ -1,22 +1,21 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\AssistantController;
-use App\Http\Controllers\ClinicController;
-use App\Http\Controllers\ClinicDoctorController;
-use App\Http\Controllers\ClinicUserController;
-use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\MedicineController;
-use App\Http\Controllers\NurseController;
-use App\Http\Controllers\PatientController;
-use App\Http\Controllers\PatientHistoryController;
-use App\Http\Controllers\PrescriptionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\RoleUserController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AppointmentController;
+use App\Http\Controllers\Admin\AssistantController;
+use App\Http\Controllers\Admin\ClinicController;
+use App\Http\Controllers\Admin\ClinicDoctorController;
+use App\Http\Controllers\Admin\ClinicUserController;
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\MedicineController;
+use App\Http\Controllers\Admin\NurseController;
+use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\PatientHistoryController;
+use App\Http\Controllers\Admin\PrescriptionController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,7 +35,7 @@ Auth::routes([
 ]);
 
 //Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::group(['middleware' => ['auth']], function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('patients', PatientController::class);
@@ -53,10 +52,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('clinic-users', ClinicUserController::class);
     Route::resource('clinic-doctors', ClinicDoctorController::class);
     Route::resource('doctors', DoctorController::class);
-
-    //Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-
-
     Route::get('/{page}',  [AdminController::class, 'index']);
 });
 
@@ -65,4 +60,4 @@ Route::get('/', function () {
     return view('index');
 });
 
-require __DIR__ . '/doctors.php';
+//require __DIR__ . '/doctors.php';

@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Assistant;
 use App\Http\Requests\AssistantRequest;
 
-/**
- * Class AssistantController
- * @package App\Http\Controllers
- */
 class AssistantController extends Controller
 {
     /**

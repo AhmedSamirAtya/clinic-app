@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Doctor;
+namespace App\Http\Requests\Patient\Auth;
 
+use App\Models\Patient;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DoctorRequest extends FormRequest
+class PatientRegisterationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,12 +22,11 @@ class DoctorRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-			'name' => 'required|string',
-			'specialization' => 'required|string',
-			'date_of_birth' => 'required',
-			'phone_number' => 'required|string',
-			'email' => 'required|string',
-        ];
+        return Patient::$rules;
+    }
+
+    public function messages(): array
+    {
+        return Patient::$messages;
     }
 }

@@ -46,6 +46,26 @@ class Patient extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = ['name', 'job', 'address', 'phone_number', 'date_of_birth', 'email'];
 
+    static $rules  = [
+        'name' => 'required|string',
+        'date_of_birth' => 'required|date',
+        'phone_number' => 'required|string',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|string|min:8',
+    ];
+
+    static $messages =  [
+        'name.required' => 'Please enter your name.',
+        'date_of_birth.required' => 'Please provide your date of birth.',
+        'date_of_birth.date' => 'Date of birth must be a valid date format.',
+        'phone_number.required' => 'Please enter your phone number.',
+        'email.required' => 'Please enter your email address.',
+        'email.email' => 'Please enter a valid email address.',
+        'email.unique' => 'This email address is already registered.',
+        'password.required' => 'Please enter a password.',
+        'password.min' => 'Password must be at least 8 characters long.',
+    ];
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -54,7 +74,7 @@ class Patient extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(\App\Models\Appointment::class, 'id', 'patient_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -62,6 +82,4 @@ class Patient extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(\App\Models\PatientHistory::class, 'id', 'patient_id');
     }
-    
-
 }

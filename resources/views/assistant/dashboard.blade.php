@@ -6,13 +6,9 @@
     <link href="{{ URL::asset('assets/plugins/jqvmap/jqvmap.min.css') }}" rel="stylesheet">
 @endsection
 @section('page-header')
-    <!-- breadcrumb -->
-    <div class="breadcrumb-header justify-content-between">
 @endsection
 @section('content')
-    <!-- row -->
-    <h1>Docotrs DashBoard</h1>
-    <!-- Container closed -->
+    <h1>Assistants DashBoard</h1>
 @endsection
 @section('js')
     <!--Internal  Chart.bundle js -->

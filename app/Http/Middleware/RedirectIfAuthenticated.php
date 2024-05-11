@@ -19,22 +19,13 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
         foreach ($guards as $guard) {
-            // if (Auth::guard($guard)->check() && $guard == 'doctor') {
-            //     return redirect()->route('doctor.dashboard');
-            // }
-            // if (Auth::guard($guard)->check() && $guard == 'patient') {
-
-            //     return redirect()->route('patient.dashboard');
-            // }
-            // if (Auth::guard($guard)->check()) {
-            //     return redirect(RouteServiceProvider::HOME);
-            // }
             if (Auth::guard($guard)->check()) {
-                // Redirect authenticated users based on the guard
                 if ($guard === 'doctor') {
                     return redirect('/doctor/dashboard');
                 } else if ($guard === 'patient') {
                     return redirect('/patient/dashboard');
+                } else if ($guard === 'assistant') {
+                    return redirect('/assistant/dashboard');
                 } else {
                     return redirect(RouteServiceProvider::HOME);
                 }

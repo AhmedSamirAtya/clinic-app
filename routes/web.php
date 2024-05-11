@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PatientHistoryController;
 use App\Http\Controllers\Admin\PrescriptionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -60,4 +61,6 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/redirect/{service}', [SocialiteController::class, 'redirect']);
+Route::get('/callback/{service}', [SocialiteController::class, 'callback']);
 //require __DIR__ . '/doctors.php';

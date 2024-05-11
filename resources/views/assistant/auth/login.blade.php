@@ -5,10 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    <div class="card-header">{{ __('Assistant Login') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('assistant.login') }}">
                             @csrf
 
                             <div class="row mb-3">
@@ -70,14 +70,6 @@
                                         </a>
                                     @endif
                                 </div>
-                            </div>
-
-                            <div class="row mb-0">
-
-                                <a class="btn btn-link" href="{{ url('redirect/facebook') }}">
-                                    {{ __('Login with facebook?') }}
-                                </a>
-
                             </div>
                         </form>
                     </div>

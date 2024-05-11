@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\Patient\Auth\PatientRegisterController;
 use App\Http\Controllers\Patient\Auth\PatientLoginController;
-use App\Http\Controllers\Patient\Controller;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
 
 Route::prefix('patient')->name('patient.')->group(function () {

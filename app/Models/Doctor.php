@@ -34,12 +34,12 @@ use Laravel\Sanctum\HasApiTokens;
 class Doctor extends Authenticatable
 {
     use SoftDeletes, HasApiTokens, HasFactory, Notifiable;
-
+    protected $table = 'doctors';
 
     protected $perPage = 20;
 
     protected $fillable = ['name', 'specialization', 'date_of_birth', 'phone_number', 'email', 'password'];
-
+    protected $hidden = ['password'];
     static $rules  = [
         'name' => 'required|string',
         'specialization' => 'required|string',
@@ -64,11 +64,11 @@ class Doctor extends Authenticatable
 
     public function appointments()
     {
-        return $this->hasMany(\App\Models\Appointment::class, 'id', 'doctor_id');
+        return $this->hasMany(Appointment::class);
     }
 
     public function clinicDoctors()
     {
-        return $this->hasMany(\App\Models\ClinicDoctor::class, 'id', 'doctor_id');
+        return $this->hasMany(ClinicDoctor::class);
     }
 }

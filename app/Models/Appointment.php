@@ -27,31 +27,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Appointment extends Model
 {
     use SoftDeletes;
-
+    protected $table = 'appointments';
 
     protected $perPage = 20;
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['patient_id', 'doctor_id', 'clinic_id', 'appointment_datetime', 'type', 'reason'];
 
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function doctor()
     {
-        return $this->belongsTo(\App\Models\Doctor::class, 'doctor_id', 'id');
+        return $this->belongsTo(Doctor::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function patient()
     {
-        return $this->belongsTo(\App\Models\Patient::class, 'patient_id', 'id');
+        return $this->belongsTo(Patient::class);
     }
 }

@@ -37,18 +37,21 @@ class Assistant  extends Authenticatable implements MustVerifyEmail
 
 
     protected $perPage = 20;
-
+    protected $table = 'assistants';
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'clinic_id', 'address', 'phone_number', 'date_of_birth', 'email'];
+    protected $fillable = ['name', 'clinic_id', 'address', 'phone_number', 'date_of_birth', 'email', 'password'];
+    protected $hidden = ['password'];
+
     static $rules  = [
         'name' => 'required|string',
         'clinic_id' => 'required',
         'date_of_birth' => 'required|date',
         'phone_number' => 'required|string',
+        'address' => 'required|string',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|string|min:8',
     ];
@@ -57,6 +60,7 @@ class Assistant  extends Authenticatable implements MustVerifyEmail
         'name.required' => 'Please enter your name.',
         'clinic_id.required' => 'Please enter your clinic.',
         'date_of_birth.required' => 'Please provide your date of birth.',
+        'address.required' => 'Please provide your address.',
         'date_of_birth.date' => 'Date of birth must be a valid date format.',
         'phone_number.required' => 'Please enter your phone number.',
         'email.required' => 'Please enter your email address.',
@@ -66,11 +70,8 @@ class Assistant  extends Authenticatable implements MustVerifyEmail
         'password.min' => 'Password must be at least 8 characters long.',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function clinic()
     {
-        return $this->belongsTo(\App\Models\Clinic::class, 'clinic_id', 'id');
+        return $this->belongsTo(\App\Models\Clinic::class);
     }
 }

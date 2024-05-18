@@ -42,7 +42,7 @@ class MedicinePrescription extends Model
      */
     public function medicine()
     {
-        return $this->belongsTo(\App\Models\Medicine::class, 'medicine_id', 'id');
+        return $this->belongsTo(\App\Models\Medicine::class);
     }
     
     /**
@@ -50,7 +50,7 @@ class MedicinePrescription extends Model
      */
     public function prescription()
     {
-        return $this->belongsTo(\App\Models\Prescription::class, 'prescription_id', 'id');
+        return $this->belongsTo(\App\Models\Prescription::class);
     }
     
 

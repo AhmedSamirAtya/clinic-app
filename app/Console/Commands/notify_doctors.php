@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Mail\NotifyDoctors;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class notify_doctors extends Command
 {

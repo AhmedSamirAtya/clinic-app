@@ -42,7 +42,7 @@ class Prescription extends Model
      */
     public function appointment()
     {
-        return $this->belongsTo(\App\Models\Appointment::class, 'appointment_id', 'id');
+        return $this->belongsTo(\App\Models\Appointment::class);
     }
 
     /**
@@ -50,7 +50,7 @@ class Prescription extends Model
      */
     public function patient()
     {
-        return $this->belongsTo(\App\Models\Patient::class, 'patient_id', 'id');
+        return $this->belongsTo(\App\Models\Patient::class);
     }
 
     /**
@@ -58,7 +58,7 @@ class Prescription extends Model
      */
     public function medicinePrescriptions()
     {
-        return $this->hasMany(\App\Models\MedicinePrescription::class, 'id', 'prescription_id');
+        return $this->hasMany(\App\Models\MedicinePrescription::class);
     }
 
     /**
@@ -66,6 +66,6 @@ class Prescription extends Model
      */
     public function patientHistories()
     {
-        return $this->hasMany(\App\Models\PatientHistory::class, 'id', 'prescription_id');
+        return $this->hasMany(\App\Models\PatientHistory::class);
     }
 }

@@ -19,7 +19,7 @@ class LocationController extends Controller
     {
         $locations = Location::paginate();
 
-        return view('location.index', compact('locations'))
+        return view('admin.location.index', compact('locations'))
             ->with('i', (request()->input('page', 1) - 1) * $locations->perPage());
     }
 
@@ -29,7 +29,7 @@ class LocationController extends Controller
     public function create()
     {
         $location = new Location();
-        return view('location.create', compact('location'));
+        return view('admin.location.create', compact('location'));
     }
 
     /**
@@ -50,7 +50,7 @@ class LocationController extends Controller
     {
         $location = Location::find($id);
 
-        return view('location.show', compact('location'));
+        return view('admin.location.show', compact('location'));
     }
 
     /**
@@ -60,7 +60,7 @@ class LocationController extends Controller
     {
         $location = Location::find($id);
 
-        return view('location.edit', compact('location'));
+        return view('admin.location.edit', compact('location'));
     }
 
     /**

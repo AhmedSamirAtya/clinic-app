@@ -42,7 +42,7 @@ class Location extends Model
      */
     public function clinic()
     {
-        return $this->belongsTo(\App\Models\Clinic::class, 'clinic_id', 'id');
+        return $this->belongsTo(\App\Models\Clinic::class);
     }
     
 

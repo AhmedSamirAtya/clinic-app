@@ -71,5 +71,11 @@ class Kernel extends HttpKernel
         'IsPatient' => \App\Http\Middleware\IsPatient::class,
         'IsAssistant' => \App\Http\Middleware\IsAssistant::class,
         'RedirectIfAuthenticated' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        /**** OTHER MIDDLEWARE ****/
+        'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+        'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
     ];
 }

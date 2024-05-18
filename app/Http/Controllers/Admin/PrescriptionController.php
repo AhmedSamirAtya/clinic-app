@@ -19,7 +19,7 @@ class PrescriptionController extends Controller
     {
         $prescriptions = Prescription::paginate();
 
-        return view('prescription.index', compact('prescriptions'))
+        return view('admin.prescription.index', compact('prescriptions'))
             ->with('i', (request()->input('page', 1) - 1) * $prescriptions->perPage());
     }
 
@@ -29,7 +29,7 @@ class PrescriptionController extends Controller
     public function create()
     {
         $prescription = new Prescription();
-        return view('prescription.create', compact('prescription'));
+        return view('admin.prescription.create', compact('prescription'));
     }
 
     /**
@@ -50,7 +50,7 @@ class PrescriptionController extends Controller
     {
         $prescription = Prescription::find($id);
 
-        return view('prescription.show', compact('prescription'));
+        return view('admin.prescription.show', compact('prescription'));
     }
 
     /**
@@ -60,7 +60,7 @@ class PrescriptionController extends Controller
     {
         $prescription = Prescription::find($id);
 
-        return view('prescription.edit', compact('prescription'));
+        return view('admin.prescription.edit', compact('prescription'));
     }
 
     /**

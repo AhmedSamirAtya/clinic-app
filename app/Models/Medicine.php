@@ -41,7 +41,7 @@ class Medicine extends Model
      */
     public function medicinePrescriptions()
     {
-        return $this->hasMany(\App\Models\MedicinePrescription::class, 'id', 'medicine_id');
+        return $this->hasMany(\App\Models\MedicinePrescription::class);
     }
     
 

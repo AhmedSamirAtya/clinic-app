@@ -19,7 +19,7 @@ class AppointmentController extends Controller
     {
         $appointments = Appointment::paginate();
 
-        return view('appointment.index', compact('appointments'))
+        return view('admin.appointment.index', compact('appointments'))
             ->with('i', (request()->input('page', 1) - 1) * $appointments->perPage());
     }
 
@@ -29,7 +29,7 @@ class AppointmentController extends Controller
     public function create()
     {
         $appointment = new Appointment();
-        return view('appointment.create', compact('appointment'));
+        return view('admin.appointment.create', compact('appointment'));
     }
 
     /**
@@ -50,7 +50,7 @@ class AppointmentController extends Controller
     {
         $appointment = Appointment::find($id);
 
-        return view('appointment.show', compact('appointment'));
+        return view('admin.appointment.show', compact('appointment'));
     }
 
     /**
@@ -60,7 +60,7 @@ class AppointmentController extends Controller
     {
         $appointment = Appointment::find($id);
 
-        return view('appointment.edit', compact('appointment'));
+        return view('admin.appointment.edit', compact('appointment'));
     }
 
     /**

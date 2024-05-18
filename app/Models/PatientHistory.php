@@ -40,7 +40,7 @@ class PatientHistory extends Model
      */
     public function patient()
     {
-        return $this->belongsTo(\App\Models\Patient::class, 'patient_id', 'id');
+        return $this->belongsTo(\App\Models\Patient::class);
     }
     
     /**
@@ -48,7 +48,7 @@ class PatientHistory extends Model
      */
     public function prescription()
     {
-        return $this->belongsTo(\App\Models\Prescription::class, 'prescription_id', 'id');
+        return $this->belongsTo(\App\Models\Prescription::class);
     }
     
 

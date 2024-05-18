@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Appointment[] $appointments
  * @property Assistant[] $assistants
  * @property ClinicDoctor[] $clinicDoctors
- * @property ClinicUser[] $clinicUsers
  * @property Location[] $locations
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -26,56 +25,35 @@ class Clinic extends Model
 {
     use SoftDeletes;
 
-
     protected $perPage = 20;
+    protected $table = 'clinics';
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['name'];
+    static $rules  = [
+        'name' => 'required|string',
+    ];
 
+    static $messages =  [
+        'name.required' => 'Please enter your name.',
+    ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function appointments()
     {
-        return $this->hasMany(\App\Models\Appointment::class, 'id', 'clinic_id');
+        return $this->hasMany(\App\Models\Appointment::class);
     }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+
     public function assistants()
     {
-        return $this->hasMany(\App\Models\Assistant::class, 'id', 'clinic_id');
+        return $this->hasMany(\App\Models\Assistant::class);
     }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+
     public function clinicDoctors()
     {
-        return $this->hasMany(\App\Models\ClinicDoctor::class, 'id', 'clinic_id');
+        return $this->hasMany(\App\Models\ClinicDoctor::class);
     }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function clinicUsers()
-    {
-        return $this->hasMany(\App\Models\ClinicUser::class, 'id', 'clinic_id');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+
     public function locations()
     {
-        return $this->hasMany(\App\Models\Location::class, 'id', 'clinic_id');
+        return $this->hasMany(\App\Models\Location::class);
     }
-    
-
 }

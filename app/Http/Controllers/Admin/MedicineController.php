@@ -19,7 +19,7 @@ class MedicineController extends Controller
     {
         $medicines = Medicine::paginate();
 
-        return view('medicine.index', compact('medicines'))
+        return view('admin.medicine.index', compact('medicines'))
             ->with('i', (request()->input('page', 1) - 1) * $medicines->perPage());
     }
 
@@ -29,7 +29,7 @@ class MedicineController extends Controller
     public function create()
     {
         $medicine = new Medicine();
-        return view('medicine.create', compact('medicine'));
+        return view('admin.medicine.create', compact('medicine'));
     }
 
     /**
@@ -50,7 +50,7 @@ class MedicineController extends Controller
     {
         $medicine = Medicine::find($id);
 
-        return view('medicine.show', compact('medicine'));
+        return view('admin.medicine.show', compact('medicine'));
     }
 
     /**
@@ -60,7 +60,7 @@ class MedicineController extends Controller
     {
         $medicine = Medicine::find($id);
 
-        return view('medicine.edit', compact('medicine'));
+        return view('admin.medicine.edit', compact('medicine'));
     }
 
     /**

@@ -19,7 +19,7 @@ class PatientHistoryController extends Controller
     {
         $patientHistories = PatientHistory::paginate();
 
-        return view('patient-history.index', compact('patientHistories'))
+        return view('admin.patient-history.index', compact('patientHistories'))
             ->with('i', (request()->input('page', 1) - 1) * $patientHistories->perPage());
     }
 
@@ -29,7 +29,7 @@ class PatientHistoryController extends Controller
     public function create()
     {
         $patientHistory = new PatientHistory();
-        return view('patient-history.create', compact('patientHistory'));
+        return view('admin.patient-history.create', compact('patientHistory'));
     }
 
     /**
@@ -50,7 +50,7 @@ class PatientHistoryController extends Controller
     {
         $patientHistory = PatientHistory::find($id);
 
-        return view('patient-history.show', compact('patientHistory'));
+        return view('admin.patient-history.show', compact('patientHistory'));
     }
 
     /**
@@ -60,7 +60,7 @@ class PatientHistoryController extends Controller
     {
         $patientHistory = PatientHistory::find($id);
 
-        return view('patient-history.edit', compact('patientHistory'));
+        return view('admin.patient-history.edit', compact('patientHistory'));
     }
 
     /**

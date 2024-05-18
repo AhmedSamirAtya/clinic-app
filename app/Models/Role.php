@@ -31,15 +31,4 @@ class Role extends Model
      * @var array
      */
     protected $fillable = ['name'];
-
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function roleUsers()
-    {
-        return $this->hasMany(\App\Models\RoleUser::class, 'id', 'role_id');
-    }
-    
-
 }

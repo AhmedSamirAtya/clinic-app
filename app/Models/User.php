@@ -25,7 +25,6 @@ use Laravel\Sanctum\HasApiTokens;
  * @property $created_at
  * @property $updated_at
  *
- * @property ClinicUser[] $clinicUsers
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -33,22 +32,27 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use SoftDeletes, HasApiTokens, HasFactory, Notifiable;
 
-
     protected $perPage = 20;
-
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['name', 'phone_number', 'email', 'password'];
+    protected $hidden = ['password'];
 
+    static $rules  = [
+        'name' => 'required|string',
+        'date_of_birth' => 'required|date',
+        'phone_number' => 'required|string',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|string|min:8',
+    ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function clinicUsers()
-    {
-        return $this->hasMany(\App\Models\ClinicUser::class, 'id', 'user_id');
-    }
+    static $messages =  [
+        'name.required' => 'Please enter your name.',
+        'date_of_birth.required' => 'Please provide your date of birth.',
+        'date_of_birth.date' => 'Date of birth must be a valid date format.',
+        'phone_number.required' => 'Please enter your phone number.',
+        'email.required' => 'Please enter your email address.',
+        'email.email' => 'Please enter a valid email address.',
+        'email.unique' => 'This email address is already registered.',
+        'password.required' => 'Please enter a password.',
+        'password.min' => 'Password must be at least 8 characters long.',
+    ];
 }

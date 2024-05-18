@@ -38,7 +38,7 @@ class Patient extends Authenticatable implements MustVerifyEmail
 
 
     protected $perPage = 20;
-
+    protected $table = 'patients';
     /**
      * Attributes that should be mass-assignable.
      *
@@ -72,7 +72,7 @@ class Patient extends Authenticatable implements MustVerifyEmail
      */
     public function appointments()
     {
-        return $this->hasMany(\App\Models\Appointment::class, 'id', 'patient_id');
+        return $this->hasMany(Appointment::class);
     }
 
     /**
@@ -80,6 +80,6 @@ class Patient extends Authenticatable implements MustVerifyEmail
      */
     public function patientHistories()
     {
-        return $this->hasMany(\App\Models\PatientHistory::class, 'id', 'patient_id');
+        return $this->hasMany(PatientHistory::class);
     }
 }

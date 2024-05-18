@@ -19,7 +19,7 @@ class PatientController extends Controller
     {
         $patients = Patient::paginate();
 
-        return view('patient.index', compact('patients'))
+        return view('admin.patient.index', compact('patients'))
             ->with('i', (request()->input('page', 1) - 1) * $patients->perPage());
     }
 
@@ -29,7 +29,7 @@ class PatientController extends Controller
     public function create()
     {
         $patient = new Patient();
-        return view('patient.create', compact('patient'));
+        return view('admin.patient.create', compact('patient'));
     }
 
     /**
@@ -50,7 +50,7 @@ class PatientController extends Controller
     {
         $patient = Patient::find($id);
 
-        return view('patient.show', compact('patient'));
+        return view('admin.patient.show', compact('patient'));
     }
 
     /**
@@ -60,7 +60,7 @@ class PatientController extends Controller
     {
         $patient = Patient::find($id);
 
-        return view('patient.edit', compact('patient'));
+        return view('admin.patient.edit', compact('patient'));
     }
 
     /**

@@ -1,4 +1,3 @@
-
 <div class="row padding-1 p-1">
     <div class="col-md-12">
 
@@ -15,12 +14,21 @@
             {!! $errors->first('description', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
-            <label for="dosage" class="form-label">{{ __('Dosage') }}</label>
-            <input type="text" name="dosage" class="form-control @error('dosage') is-invalid @enderror"
-                value="{{ old('dosage', $medicine?->dosage) }}" id="dosage" placeholder="Dosage">
-            {!! $errors->first('dosage', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+            <label for="unit" class="form-label">{{ __('unit') }}</label>
+            <input type="text" name="unit" class="form-control @error('unit') is-invalid @enderror"
+                value="{{ old('unit', $medicine?->unit) }}" id="unit" placeholder="unit">
+            {!! $errors->first('unit', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
-      
+        <div class="form-group mb-2 mb20">
+            <label for="concentration" class="form-label">{{ __('concentration') }}</label>
+            <input type="text" name="concentration" class="form-control @error('concentration') is-invalid @enderror"
+                value="{{ old('concentration', $medicine?->dosage) }}" id="concentration" placeholder="concentration">
+            {!! $errors->first(
+                'concentration',
+                '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>',
+            ) !!}
+        </div>
+
 
     </div>
     <div class="col-md-12 mt20 mt-2">

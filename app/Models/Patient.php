@@ -36,15 +36,10 @@ class Patient extends Authenticatable implements MustVerifyEmail
 {
     use SoftDeletes, HasApiTokens, HasFactory, Notifiable;
 
-
     protected $perPage = 20;
     protected $table = 'patients';
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'job', 'address', 'phone_number', 'date_of_birth', 'email'];
+
+    protected $fillable = ['name', 'job', 'address', 'phone_number', 'date_of_birth', 'email', 'password'];
 
     static $rules  = [
         'name' => 'required|string',
@@ -66,18 +61,11 @@ class Patient extends Authenticatable implements MustVerifyEmail
         'password.min' => 'Password must be at least 8 characters long.',
     ];
 
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function appointments()
     {
         return $this->hasMany(Appointment::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function patientHistories()
     {
         return $this->hasMany(PatientHistory::class);

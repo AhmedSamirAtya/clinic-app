@@ -19,15 +19,6 @@
                     </div>
 
                     <div class="card-body bg-white">
-                        
-                        <div class="form-group mb-2 mb20">
-                            <strong>Patient Id:</strong>
-                            {{ $prescription->patient_id }}
-                        </div>
-                        <div class="form-group mb-2 mb20">
-                            <strong>Doctor Id:</strong>
-                            {{ $prescription->doctor_id }}
-                        </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Diagnosis:</strong>
                             {{ $prescription->diagnosis }}

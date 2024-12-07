@@ -39,7 +39,8 @@
 
                                         <th>Name</th>
                                         <th>Description</th>
-                                        <th>Dosage</th>
+                                        <th>unit</th>
+                                        <th>concentration</th>
 
                                         <th></th>
                                     </tr>
@@ -51,7 +52,8 @@
 
                                             <td>{{ $medicine->name }}</td>
                                             <td>{{ $medicine->description }}</td>
-                                            <td>{{ $medicine->dosage }}</td>
+                                            <td>{{ $medicine->unit }}</td>
+                                            <td>{{ $medicine->concentration }}</td>
 
                                             <td>
                                                 <form action="{{ route('medicines.destroy', $medicine->id) }}"

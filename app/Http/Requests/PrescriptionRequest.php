@@ -22,9 +22,8 @@ class PrescriptionRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'patient_id' => 'required',
-			'doctor_id' => 'required',
-			'diagnosis' => 'string',
+			'appointment_id' => 'required|int',
+			'diagnosis' => 'required|string',
         ];
     }
 }

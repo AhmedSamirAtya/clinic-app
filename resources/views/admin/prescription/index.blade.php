@@ -36,11 +36,11 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-
+                                        <th>Appointment Identifier</th>
                                         <th>Patient</th>
                                         <th>Doctor</th>
                                         <th>Diagnosis</th>
-
+                                        <th>Medicines</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -48,10 +48,18 @@
                                     @foreach ($prescriptions as $prescription)
                                         <tr>
                                             <td>{{ $prescription->id }}</td>
-
-                                            <td>{{ $prescription->patient->name }}</td>
-                                            <td>{{ $prescription->doctor->name }}</td>
+                                            <td>{{ $prescription->appointment_id }}</td>
+                                            <td>{{ $prescription->appointment->patient->name }}</td>
+                                            <td>{{ $prescription->appointment->doctor->name }}</td>
                                             <td>{{ $prescription->diagnosis }}</td>
+                                            <td>
+                                                <ul>
+                                                    @foreach ($prescription->medicines as $medicine)
+                                                        <li>{{ $medicine->name }} - {{ $medicine->concentration }} -
+                                                            {{ $medicine->unit }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
 
                                             <td>
                                                 <form action="{{ route('prescriptions.destroy', $prescription->id) }}"

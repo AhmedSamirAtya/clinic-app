@@ -25,24 +25,14 @@ class Medicine extends Model
 {
     use SoftDeletes;
 
-
     protected $perPage = 20;
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['name', 'description', 'unit', 'concentration'];
 
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function medicinePrescriptions()
-    {
-        return $this->hasMany(\App\Models\MedicinePrescription::class);
-    }
     
+    public function prescriptions()
+    {
+        return $this->belongsToMany(Prescription::class)->withTimestamps();
+    }
 
 }

@@ -111,6 +111,7 @@
             @include('layouts.models')
             @include('layouts.footer')
             @include('layouts.footer-scripts')
+            @yield('custom_scripts')
 </body>
 
 </html>

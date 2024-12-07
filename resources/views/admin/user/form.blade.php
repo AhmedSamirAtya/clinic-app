@@ -23,7 +23,7 @@
             <label for="password" class="form-label">{{ __('password') }}</label>
             <input class="form-control" type="password" id="password" name="password"
                 @error('password') is-invalid @enderror value="{{ old('password', $user?->password) }}"
-                id="phone_number" placeholder="{{ __('password') }}">
+                id="password" placeholder="{{ __('password') }}">
             {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
         </div>
     </div>

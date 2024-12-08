@@ -31,5 +31,17 @@ class DoctorsSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+        DB::table('doctors')->insert([
+            'name' => 'د.هاجر الديب',
+            'specialization' => 'أنف وأذن وحنجره',
+            'date_of_birth' => '1992-09-12',
+            'phone_number' => '0402226596',
+            'email' => 'dr.hager@clinics.com',
+            'email_verified_at' => Carbon::now(),
+            'password' => Hash::make('12345678'),
+            'remember_token' => str_random(10),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }

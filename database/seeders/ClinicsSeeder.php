@@ -18,5 +18,11 @@ class ClinicsSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        DB::table('clinics')->insert([
+            'name' => 'عيادات فاروق التخصصية' ,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

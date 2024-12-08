@@ -26,7 +26,8 @@ class MedicinePrescriptionSeeder extends Seeder
             DB::table('medicine_prescription')->insert([
                 'medicine_id' => $medicines[$medicineId],
                 'prescription_id' => $prescriptions[$prescriptionId],
-                'quantity' => $quantity,
+                'dose' => $quantity,
+                'duration_in_days' => $quantity,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

@@ -17,12 +17,12 @@ class DatabaseSeeder extends Seeder
         $this->call(DoctorsSeeder::class);
         $this->call(PatientsSeeder::class);
         $this->call(AssistantsSeeder::class);
-        // 
-        // $this->call(ClinicDoctorSeeder::class);
-        // $this->call(MedicinesSeeder::class);
-        // $this->call(PrescriptionsSeeder::class);
-        // $this->call(MedicinePrescriptionSeeder::class);
-        //
+        $this->call(ClinicDoctorSeeder::class);
+        $this->call(MedicinesSeeder::class);
+        $this->call(AppointmentSeeder::class);
+        $this->call(PrescriptionsSeeder::class);
+        $this->call(MedicinePrescriptionSeeder::class);
+        //in future
         // $this->call(BillsSeeder::class);
         // $this->call(PaymentMethodsSeeder::class);
         // $this->call(BillPaymentSeeder::class);

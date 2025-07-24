@@ -38,11 +38,10 @@ class Doctor extends Authenticatable
 
     protected $perPage = 20;
 
-    protected $fillable = ['name', 'specialization', 'date_of_birth', 'phone_number', 'email', 'password'];
+    protected $fillable = ['name', 'date_of_birth', 'phone_number', 'email', 'password', 'gender'];
     protected $hidden = ['password'];
     static $rules  = [
         'name' => 'required|string',
-        'specialization' => 'required|string',
         'date_of_birth' => 'required|date',
         'phone_number' => 'required|string',
         'email' => 'required|email|unique:users,email',
@@ -51,11 +50,11 @@ class Doctor extends Authenticatable
 
     static $messages =  [
         'name.required' => 'Please enter your name.',
-        'specialization.required' => 'Please specify your specialization.',
         'date_of_birth.required' => 'Please provide your date of birth.',
         'date_of_birth.date' => 'Date of birth must be a valid date format.',
         'phone_number.required' => 'Please enter your phone number.',
         'email.required' => 'Please enter your email address.',
+        'gender.required' => 'Please enter your gender.',
         'email.email' => 'Please enter a valid email address.',
         'email.unique' => 'This email address is already registered.',
         'password.required' => 'Please enter a password.',
@@ -70,5 +69,10 @@ class Doctor extends Authenticatable
     public function clinicDoctors()
     {
         return $this->hasMany(ClinicDoctor::class);
+    }
+
+    public function specializations()
+    {
+        return $this->belongsToMany(Specialization::class, 'specializations_doctors', 'doctor_id', 'specialization_id');
     }
 }

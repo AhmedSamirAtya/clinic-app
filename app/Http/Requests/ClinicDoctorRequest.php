@@ -24,6 +24,9 @@ class ClinicDoctorRequest extends FormRequest
         return [
 			'clinic_id' => 'required',
 			'doctor_id' => 'required',
+            'start_time' => 'required',
+			'end_time' => 'required',
+            'appointment_price' => 'required',
         ];
     }
 }

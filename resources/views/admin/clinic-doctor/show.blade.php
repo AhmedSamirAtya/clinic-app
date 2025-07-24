@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="card-body bg-white">
-                        
+
                         <div class="form-group mb-2 mb20">
                             <strong>Clinic Id:</strong>
                             {{ $clinicDoctor->clinic_id }}
@@ -27,6 +27,22 @@
                         <div class="form-group mb-2 mb20">
                             <strong>Doctor Id:</strong>
                             {{ $clinicDoctor->doctor_id }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Start Time:</strong>
+                            {{ $clinicDoctor->start_time }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>End Time:</strong>
+                            {{ $clinicDoctor->end_time }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Working Days:</strong>
+                            {{ $clinicDoctor->working_days }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Appointment Price:</strong>
+                            {{ $clinicDoctor->appointment_price }}
                         </div>
 
                     </div>

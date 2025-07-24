@@ -35,9 +35,13 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Clinic</th>
-										<th>Doctor</th>
+
+										<th>Clinic Id</th>
+										<th>Doctor Id</th>
+										<th>Start Time</th>
+										<th>End Time</th>
+										<th>Working Days</th>
+										<th>Appointment Price</th>
 
                                         <th></th>
                                     </tr>
@@ -45,10 +49,14 @@
                                 <tbody>
                                     @foreach ($clinicDoctors as $clinicDoctor)
                                         <tr>
-                                            <td>{{ $clinicDoctor->id }}</td>
-                                            
-											<td>{{ $clinicDoctor->clinic->name }}</td>
-											<td>{{ $clinicDoctor->doctor->name }}</td>
+                                            <td>{{ ++$i }}</td>
+
+											<td>{{ $clinicDoctor->clinic_id }}</td>
+											<td>{{ $clinicDoctor->doctor_id }}</td>
+											<td>{{ $clinicDoctor->start_time }}</td>
+											<td>{{ $clinicDoctor->end_time }}</td>
+											<td>{{ $clinicDoctor->working_days }}</td>
+											<td>{{ $clinicDoctor->appointment_price }}</td>
 
                                             <td>
                                                 <form action="{{ route('clinic-doctors.destroy',$clinicDoctor->id) }}" method="POST">

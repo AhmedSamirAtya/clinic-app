@@ -17,7 +17,7 @@
                         <form method="POST" action="{{ route('clinic-doctors.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('clinic-doctor.form')
+                            @include('admin.clinic-doctor.form')
 
                         </form>
                     </div>

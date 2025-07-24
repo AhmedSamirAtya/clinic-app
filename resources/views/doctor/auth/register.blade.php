@@ -60,26 +60,9 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="specialization"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('specialization') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="specialization" type="text"
-                                        class="form-control @error('specialization') is-invalid @enderror"
-                                        name="specialization" value="{{ old('specialization') }}" required
-                                        autocomplete="specialization">
-
-                                    @error('specialization')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label for="date_of_birth"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('specialization') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('date_of_birth') }}</label>
                                 <input type="date" id="date_of_birth" name="date_of_birth">
                                 {!! $errors->first('date_of_birth', '<div class="invalid-feedback">:message</div>') !!}
                             </div>

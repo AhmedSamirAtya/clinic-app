@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Patient;
+namespace App\Http\Requests\Clinic;
 
 use App\Models\Patient;
 use Illuminate\Foundation\Http\FormRequest;

@@ -21,7 +21,6 @@ class DoctorsSeeder extends Seeder
         $faker = Faker::create();
         DB::table('doctors')->insert([
             'name' => 'د.احمد العرابى',
-            'specialization' => 'اطفال وحديثى الولاده ومبتسرين',
             'date_of_birth' => '1980-05-15',
             'phone_number' => '0123456789',
             'email' => 'dr.orabi@clinics.com',
@@ -33,7 +32,6 @@ class DoctorsSeeder extends Seeder
         ]);
         DB::table('doctors')->insert([
             'name' => 'د.هاجر الديب',
-            'specialization' => 'أنف وأذن وحنجره',
             'date_of_birth' => '1992-09-12',
             'phone_number' => '0402226596',
             'email' => 'dr.hager@clinics.com',

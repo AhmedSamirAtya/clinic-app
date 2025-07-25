@@ -1,10 +1,17 @@
+@php
+    $clinics = \App\Models\Clinic::all();
+@endphp
 <div class="row padding-1 p-1">
     <div class="col-md-12">
-        
-        <div class="form-group mb-2 mb20">
-            <label for="clinic_id" class="form-label">{{ __('Clinic Id') }}</label>
-            <input type="text" name="clinic_id" class="form-control @error('clinic_id') is-invalid @enderror" value="{{ old('clinic_id', $location?->clinic_id) }}" id="clinic_id" placeholder="Clinic Id">
-            {!! $errors->first('clinic_id', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+
+        <div class="form-group">
+            <select class="form-control" title="Clinic" id="clinic_id" name="clinic_id">
+                @foreach ($clinics as $clinic)
+                    <option value="{{ $clinic->id }}" @if ($clinic->id == $location?->clinic_id) selected @endif>
+                        {{ $clinic->name }}</option>
+                @endforeach
+            </select>
+            {!! $errors->first('clinic_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
             <label for="address" class="form-label">{{ __('Address') }}</label>

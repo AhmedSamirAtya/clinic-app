@@ -51,11 +51,11 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
-											<td>{{ $clinicDoctor->clinic_id }}</td>
-											<td>{{ $clinicDoctor->doctor_id }}</td>
+											<td>{{ $clinicDoctor->clinic->name }}</td>
+											<td>{{ $clinicDoctor->doctor->name }}</td>
 											<td>{{ $clinicDoctor->start_time }}</td>
 											<td>{{ $clinicDoctor->end_time }}</td>
-											<td>{{ $clinicDoctor->working_days }}</td>
+											<td>{{ implode(', ', $clinicDoctor->working_days ?? []) }}</td>
 											<td>{{ $clinicDoctor->appointment_price }}</td>
 
                                             <td>

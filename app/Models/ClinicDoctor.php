@@ -37,7 +37,12 @@ class ClinicDoctor extends Model
      * @var array
      */
     protected $fillable = ['clinic_id', 'doctor_id', 'start_time', 'end_time', 'working_days', 'appointment_price'];
-
+    protected $casts = [
+        'working_days' => 'array', // Or 'json' which is an alias for 'array'
+        'start_time' => 'datetime', // Optional: if you want to work with Carbon instances
+        'end_time' => 'datetime',   // Optional: if you want to work with Carbon instances
+        'appointment_price' => 'decimal:2', // Optional: cast to float with 2 decimal places
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

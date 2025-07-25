@@ -35,13 +35,11 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Clinic Id</th>
+										<th>Clinic</th>
 										<th>Address</th>
 										<th>City</th>
 										<th>State</th>
 										<th>Postal Code</th>
-
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -49,8 +47,8 @@
                                     @foreach ($locations as $location)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $location->clinic_id }}</td>
+
+											<td>{{ $location->clinic->name }}</td>
 											<td>{{ $location->address }}</td>
 											<td>{{ $location->city }}</td>
 											<td>{{ $location->state }}</td>

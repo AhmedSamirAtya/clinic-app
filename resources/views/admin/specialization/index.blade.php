@@ -35,17 +35,15 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
 										<th>Name</th>
-
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($specializations as $specialization)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
+                                            <td>{{ $specialization->id }}</td>
+
 											<td>{{ $specialization->name }}</td>
 
                                             <td>

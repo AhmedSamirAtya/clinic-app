@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Class SpecializationsDoctor
  *
  * @property $id
- * @property $docotr_id
+ * @property $doctor_id
  * @property $specialization_id
  * @property $deleted_at
  * @property $created_at

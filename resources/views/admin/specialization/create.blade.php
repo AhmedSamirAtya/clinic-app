@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('template_title')
-    {{ __('Create') }} Specializations Doctor
+    {{ __('Create') }} Specialization
 @endsection
 
 @section('content')
@@ -11,13 +11,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Specializations Doctor</span>
+                        <span class="card-title">{{ __('Create') }} Specialization</span>
                     </div>
                     <div class="card-body bg-white">
-                        <form method="POST" action="{{ route('specializations-doctors.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('specializations.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('specializations-doctor.form')
+                            @include('admin.specialization.form')
 
                         </form>
                     </div>

@@ -22,7 +22,7 @@ class SpecializationsDoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'docotr_id' => 'required',
+			'doctor_id' => 'required',
 			'specialization_id' => 'required',
         ];
     }

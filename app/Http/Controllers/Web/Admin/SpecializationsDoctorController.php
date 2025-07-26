@@ -19,7 +19,7 @@ class SpecializationsDoctorController extends Controller
     {
         $specializationsDoctors = SpecializationsDoctor::paginate();
 
-        return view('specializations-doctor.index', compact('specializationsDoctors'))
+        return view('admin.specializations-doctor.index', compact('specializationsDoctors'))
             ->with('i', (request()->input('page', 1) - 1) * $specializationsDoctors->perPage());
     }
 
@@ -29,7 +29,7 @@ class SpecializationsDoctorController extends Controller
     public function create()
     {
         $specializationsDoctor = new SpecializationsDoctor();
-        return view('specializations-doctor.create', compact('specializationsDoctor'));
+        return view('admin.specializations-doctor.create', compact('specializationsDoctor'));
     }
 
     /**
@@ -38,7 +38,6 @@ class SpecializationsDoctorController extends Controller
     public function store(SpecializationsDoctorRequest $request)
     {
         SpecializationsDoctor::create($request->validated());
-
         return redirect()->route('specializations-doctors.index')
             ->with('success', 'SpecializationsDoctor created successfully.');
     }
@@ -49,8 +48,7 @@ class SpecializationsDoctorController extends Controller
     public function show($id)
     {
         $specializationsDoctor = SpecializationsDoctor::find($id);
-
-        return view('specializations-doctor.show', compact('specializationsDoctor'));
+        return view('admin.specializations-doctor.show', compact('specializationsDoctor'));
     }
 
     /**
@@ -60,7 +58,7 @@ class SpecializationsDoctorController extends Controller
     {
         $specializationsDoctor = SpecializationsDoctor::find($id);
 
-        return view('specializations-doctor.edit', compact('specializationsDoctor'));
+        return view('admin.specializations-doctor.edit', compact('specializationsDoctor'));
     }
 
     /**

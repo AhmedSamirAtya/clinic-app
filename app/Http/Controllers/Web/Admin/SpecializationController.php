@@ -19,7 +19,7 @@ class SpecializationController extends Controller
     {
         $specializations = Specialization::paginate();
 
-        return view('specialization.index', compact('specializations'))
+        return view('admin.specialization.index', compact('specializations'))
             ->with('i', (request()->input('page', 1) - 1) * $specializations->perPage());
     }
 
@@ -29,7 +29,7 @@ class SpecializationController extends Controller
     public function create()
     {
         $specialization = new Specialization();
-        return view('specialization.create', compact('specialization'));
+        return view('admin.specialization.create', compact('specialization'));
     }
 
     /**
@@ -50,7 +50,7 @@ class SpecializationController extends Controller
     {
         $specialization = Specialization::find($id);
 
-        return view('specialization.show', compact('specialization'));
+        return view('admin.specialization.show', compact('specialization'));
     }
 
     /**
@@ -60,7 +60,7 @@ class SpecializationController extends Controller
     {
         $specialization = Specialization::find($id);
 
-        return view('specialization.edit', compact('specialization'));
+        return view('admin.specialization.edit', compact('specialization'));
     }
 
     /**

@@ -35,21 +35,17 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Docotr Id</th>
-										<th>Specialization Id</th>
-
+										<th>Docotr</th>
+										<th>Specialization</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($specializationsDoctors as $specializationsDoctor)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $specializationsDoctor->docotr_id }}</td>
-											<td>{{ $specializationsDoctor->specialization_id }}</td>
-
+                                            <td>{{ $specializationsDoctor->id }}</td>
+											<td>{{ $specializationsDoctor->doctor->name }}</td>
+											<td>{{ $specializationsDoctor->specialization->name }}</td>
                                             <td>
                                                 <form action="{{ route('specializations-doctors.destroy',$specializationsDoctor->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('specializations-doctors.show',$specializationsDoctor->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>

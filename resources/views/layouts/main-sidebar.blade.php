@@ -82,7 +82,15 @@
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('prescriptions.index') }}"><span
                         class="side-menu__label">Prescriptions</span></a>
-                </li>
+            </li>
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('specializations.index') }}"><span
+                        class="side-menu__label">Specializations</span></a>
+            </li>
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('specializations-doctors.index') }}"><span
+                        class="side-menu__label">Specializations Doctor</span></a>
+            </li>
         </ul>
     </div>
 </aside>

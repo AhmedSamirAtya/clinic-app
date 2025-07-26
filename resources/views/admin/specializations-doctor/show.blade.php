@@ -19,14 +19,14 @@
                     </div>
 
                     <div class="card-body bg-white">
-                        
+
                         <div class="form-group mb-2 mb20">
                             <strong>Docotr Id:</strong>
-                            {{ $specializationsDoctor->docotr_id }}
+                            {{ $specializationsDoctor->docotr->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Specialization Id:</strong>
-                            {{ $specializationsDoctor->specialization_id }}
+                            {{ $specializationsDoctor->specialization->name }}
                         </div>
 
                     </div>

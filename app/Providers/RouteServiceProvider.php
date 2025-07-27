@@ -33,6 +33,14 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
+
+            //     Route::middleware('web')
+            //     ->group(base_path('routes/web.php'));
+
+            // // Register your new assistants routes here
+            // Route::middleware('web') // Or 'assistant' if it's a separate web-based flow
+            //     ->group(base_path('routes/assistants.php'));
+
             Route::middleware(['web', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
                 ->prefix(LaravelLocalization::setLocale())
                 ->group(base_path('routes/doctors.php'));

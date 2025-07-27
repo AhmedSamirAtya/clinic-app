@@ -17,7 +17,7 @@
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('assistant.appointments.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('assistants.appointments.create-appointment') }}" class="btn btn-primary btn-sm float-right"
                                     data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
@@ -52,13 +52,13 @@
                                             <td>{{ $appointment->appointment_datetime }}</td>
                                             <td>{{ $appointment->type }}</td>
                                             <td>
-                                                <form action="{{ route('assistant.appointments.destroy', $appointment->id) }}"
+                                                <form action="{{ route('assistants.appointments.destroy-appointment', $appointment->id) }}"
                                                     method="POST">
                                                     <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('assistant.appointments.show', $appointment->id) }}"><i
+                                                        href="{{ route('assistants.appointments.view-appointment', $appointment->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success"
-                                                        href="{{ route('assistant.appointments.edit', $appointment->id) }}"><i
+                                                        href="{{ route('assistants.appointments.edit-appointment', $appointment->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')

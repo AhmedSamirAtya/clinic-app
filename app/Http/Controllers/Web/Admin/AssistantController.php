@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Assistant;
 use App\Http\Requests\Assistant\AssistantRequest;
+use App\Models\Appointment;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AssistantController extends Controller
 {
@@ -26,6 +29,13 @@ class AssistantController extends Controller
         Assistant::create($request->validated());
         return redirect()->route('assistants.index')
             ->with('success', 'Assistant created successfully.');
+    }
+
+    public function appointments(Request $request)
+    {
+        $appointments = Appointment::with(['patient', 'doctor'])->where('clinic_id', Auth::guard('assistant')->user()->clinic_id)->paginate();
+        return view('assistant.appointment.index', compact('appointments'))
+            ->with('i', (request()->input('page', 1) - 1) * $appointments->perPage());
     }
 
     public function show($id)

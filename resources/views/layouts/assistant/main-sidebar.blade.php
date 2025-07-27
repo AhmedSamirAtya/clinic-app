@@ -22,15 +22,14 @@
                         class="avatar-status profile-status bg-green"></span>
                 </div>
                 <div class="user-info">
-                    <h4 class="font-weight-semibold mt-3 mb-0">{{ Auth::user()?->email }}</h4>
+                    <h4 class="font-weight-semibold mt-3 mb-0">{{ Auth::guard('assistant')?->user()->email }}</h4>
                 </div>
             </div>
         </div>
         <ul class="side-menu">
-            <li class="side-item side-item-category">Main</li>
             <li class="slide">
-                <a class="side-menu__item" href="{{ route('doctor.patients') }}"><span
-                        class="side-menu__label">Patients</span></a>
+                <a class="side-menu__item" href="{{ route('assistant.appointments') }}"><span
+                        class="side-menu__label">Appointments</span></a>
             </li>
         </ul>
     </div>

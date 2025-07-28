@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('assistants')->name('assistants.')->group(function () {
     Route::middleware('IsAssistant')->group(function () {
         Route::view('/dashboard', 'assistant.dashboard')->name('dashboard');
+        Route::get('/show-doctors-table', [AssistantController::class, 'getDoctorsTable'])->name('show-doctors-table');
         Route::prefix('appointments')->name('appointments.')->group(function () {
             Route::get('/', [AssistantController::class, 'appointments'])->name('get-appointments');
             Route::get('/create', [AssistantController::class, 'createAppointment'])->name('create-appointment');

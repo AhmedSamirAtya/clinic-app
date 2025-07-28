@@ -28,8 +28,10 @@
         </div>
         <ul class="side-menu">
             <li class="slide">
-                <a class="side-menu__item" href="{{ route('assistants.get-appointments') }}"><span
+                <a class="side-menu__item" href="{{ route('assistants.appointments.get-appointments') }}"><span
                         class="side-menu__label">Appointments</span></a>
+                <a class="side-menu__item" href="{{ route('assistants.show-doctors-table') }}"><span
+                        class="side-menu__label">Doctors-Table</span></a>
             </li>
         </ul>
     </div>

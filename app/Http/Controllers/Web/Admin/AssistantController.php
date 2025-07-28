@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Assistant;
 use App\Http\Requests\Assistant\AssistantRequest;
 use App\Models\Appointment;
+use App\Models\Clinic;
+use App\Models\ClinicDoctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,5 +64,11 @@ class AssistantController extends Controller
         Assistant::find($id)->delete();
         return redirect()->route('assistants.index')
             ->with('success', 'Assistant deleted successfully');
+    }
+
+    public function getDoctorsTable()
+    {
+        $clinicDoctorsGrouped = ClinicDoctor::where('clinic_id', Auth::guard('assistant')->user()->clinic_id)->with(['doctor', 'clinic'])->get()->groupBy('doctor_id');
+        return view('assistant.doctors_table', compact('clinicDoctorsGrouped'));
     }
 }

@@ -65,10 +65,4 @@ class AssistantController extends Controller
         return redirect()->route('assistants.index')
             ->with('success', 'Assistant deleted successfully');
     }
-
-    public function getDoctorsTable()
-    {
-        $clinicDoctorsGrouped = ClinicDoctor::where('clinic_id', Auth::guard('assistant')->user()->clinic_id)->with(['doctor', 'clinic'])->get()->groupBy('doctor_id');
-        return view('assistant.doctors_table', compact('clinicDoctorsGrouped'));
-    }
 }

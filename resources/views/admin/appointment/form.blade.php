@@ -2,7 +2,7 @@
     $clinics = \App\Models\Clinic::all();
     $doctors = \App\Models\Doctor::all();
     $patients = \App\Models\Patient::all();
-    $types = ['urgent', 'normal', 'repeated'];
+    $appointmentTypes = \App\Constants\TypesOfAppointment::ALL_TYPES;
 @endphp
 <div class="row padding-1 p-1">
     <div class="col-md-12">

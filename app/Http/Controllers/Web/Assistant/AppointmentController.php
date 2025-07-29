@@ -10,7 +10,7 @@ use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AssistantController extends Controller
+class AppointmentController extends Controller
 {
     public function createAppointment()
     {
@@ -34,7 +34,7 @@ class AssistantController extends Controller
 
     public function viewAppointment($id)
     {
-        $appointment = Appointment::with(['patient', 'doctor'])->find($id);
+        $appointment = Appointment::with(['patient', 'doctor', 'prescription'])->find($id);
         return view('assistant.appointment.show', compact('appointment'));
     }
 
@@ -50,6 +50,7 @@ class AssistantController extends Controller
         return redirect()->route('assistant.appointments.index')
             ->with('success', 'Appointment updated successfully');
     }
+
     public function destroy($id)
     {
         Appointment::find($id)->delete();

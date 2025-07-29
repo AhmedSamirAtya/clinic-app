@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.assistant.master')
 
 @section('template_title')
     {{ $appointment->name ?? __('Show') . " " . __('Appointment') }}
@@ -14,19 +14,21 @@
                             <span class="card-title">{{ __('Show') }} Appointment</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('assistant.appointments.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('assistants.appointments.get-appointments') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
-
                     <div class="card-body bg-white">
-
-                        <div class="form-group mb-2 mb20">
-                            <strong>Patient Id:</strong>
-                            {{ $appointment->patient_id }}
+                         <div class="form-group mb-2 mb20">
+                            <strong>Prescription:</strong>
+                            {{ $appointment->prescription->diagnosis ?? 'N/A' }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Doctor Id:</strong>
-                            {{ $appointment->doctor_id }}
+                            <strong>Patient:</strong>
+                            {{ $appointment->patient->name }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Doctor:</strong>
+                            {{ $appointment->doctor->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Appointment Datetime:</strong>
@@ -36,7 +38,10 @@
                             <strong>Type:</strong>
                             {{ $appointment->type }}
                         </div>
-
+                         <div class="form-group mb-2 mb20">
+                            <strong>Status:</strong>
+                            {{ $appointment->status }}
+                        </div>
                     </div>
                 </div>
             </div>

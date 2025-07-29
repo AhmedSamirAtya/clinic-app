@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.assistant.master')
 
 @section('template_title')
     {{ __('Create') }} Appointment

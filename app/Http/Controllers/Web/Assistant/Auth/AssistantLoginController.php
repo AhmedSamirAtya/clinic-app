@@ -16,7 +16,7 @@ class AssistantLoginController extends Controller
         return view('assistant.auth.login');
     }
 
-    protected $redirectTo = '/assistant/dashboard';
+    protected $redirectTo = '/assistants/dashboard';
 
     public function __construct()
     {

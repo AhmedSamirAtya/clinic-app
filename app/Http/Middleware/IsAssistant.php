@@ -19,6 +19,6 @@ class IsAssistant
         if (Auth::guard('assistant')->check()) {
             return $next($request);
         }
-        return redirect()->route('assistant.login');
+        return redirect()->route('assistants.login');
     }
 }

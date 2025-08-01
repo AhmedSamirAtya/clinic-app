@@ -51,7 +51,7 @@
             <div class="form-group">
                 <label for="type" class="form-label">{{ __('Type') }}</label>
                 <select class="form-control" title="Type" id="type" name="type">
-                    @foreach ($types as $type)
+                    @foreach ($appointmentTypes as $type)
                         <option value="{{ $type }}" @if ($type == $appointment->type) selected @endif>
                             {{ $type }}</option>
                     @endforeach

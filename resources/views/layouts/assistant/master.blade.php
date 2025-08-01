@@ -38,6 +38,7 @@
             @include('layouts.sidebar')
             @include('layouts.models')
             @include('layouts.footer')
+            @yield('scripts')
             @include('layouts.footer-scripts')
 </body>
 

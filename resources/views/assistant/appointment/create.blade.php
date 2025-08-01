@@ -14,7 +14,7 @@
                         <span class="card-title">{{ __('Create') }} Appointment</span>
                     </div>
                     <div class="card-body bg-white">
-                        <form method="POST" action="{{ route('assistant.appointments.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('assistants.appointments.store-appointment') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('assistant.appointment.form')

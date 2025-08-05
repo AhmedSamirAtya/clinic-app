@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class Appointment
@@ -12,7 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property $patient_id
  * @property $doctor_id
  * @property $clinic_id
- * @property $appointment_datetime
+ * @property $date
+ * @property $order
  * @property $type
  * @property $reson
  * @property $deleted_at
@@ -31,7 +33,27 @@ class Appointment extends Model
 
     protected $perPage = 20;
 
-    protected $fillable = ['patient_id', 'doctor_id', 'clinic_id', 'appointment_datetime', 'type', 'reason'];
+    protected $fillable = ['patient_id', 'doctor_id', 'clinic_id', 'date', 'type', 'reason', 'order'];
+
+     protected $casts = [
+        'date' => 'date', // Optional: if you want to work with Carbon instances
+    ];
+
+    protected static function boot()
+{
+    parent::boot();
+
+    static::creating(function ($appointment) {
+        if (!$appointment->clinic_id || !$appointment->doctor_id || !$appointment->date) {
+            return;
+        }
+        $lastOrder = static::where('clinic_id', $appointment->clinic_id)
+            ->where('doctor_id', $appointment->doctor_id)
+            ->whereDate('date', $appointment->date?->format('Y-m-d'))
+            ->max('order');
+        $appointment->order = $lastOrder + 1;
+    });
+}
 
     public function doctor()
     {

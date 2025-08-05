@@ -38,7 +38,8 @@
                                         <th>No</th>
                                         <th>Patient Id</th>
                                         <th>Doctor Id</th>
-                                        <th>Appointment Datetime</th>
+                                        <th>Date</th>
+                                        <th>Order</th>
                                         <th>Type</th>
                                         <th></th>
                                     </tr>
@@ -49,7 +50,8 @@
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $appointment->patient?->name }}</td>
                                             <td>{{ $appointment->doctor?->name }}</td>
-                                            <td>{{ $appointment->appointment_datetime }}</td>
+                                            <td>{{ $appointment->date?->format('Y-m-d') }}</td>
+                                            <td>{{ $appointment->order }}</td>
                                             <td>{{ $appointment->type }}</td>
                                             <td>
                                                 <form action="{{ route('assistants.appointments.destroy-appointment', $appointment->id) }}"

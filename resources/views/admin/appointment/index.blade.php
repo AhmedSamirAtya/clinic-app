@@ -36,9 +36,11 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        <th>Patient Id</th>
-                                        <th>Doctor Id</th>
-                                        <th>Appointment Datetime</th>
+                                        <th>Patient</th>
+                                        <th>Doctor</th>
+                                        <th>Clinic</th>
+                                        <th>Date</th>
+                                        <th>Order</th>
                                         <th>Type</th>
                                         <th></th>
                                     </tr>
@@ -46,10 +48,12 @@
                                 <tbody>
                                     @foreach ($appointments as $appointment)
                                         <tr>
-                                            <td>{{ $appointment->id }}</td>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $appointment->patient?->name }}</td>
                                             <td>{{ $appointment->doctor?->name }}</td>
-                                            <td>{{ $appointment->appointment_datetime }}</td>
+                                            <td>{{ $appointment->clinic?->name }}</td>
+                                            <td>{{ $appointment->date?->format('Y-m-d') }}</td>
+                                            <td>{{ $appointment->order }}</td>
                                             <td>{{ $appointment->type }}</td>
                                             <td>
                                                 <form action="{{ route('appointments.destroy', $appointment->id) }}"

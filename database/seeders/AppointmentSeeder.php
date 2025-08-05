@@ -21,7 +21,8 @@ class AppointmentSeeder extends Seeder
                 'patient_id' => 1,
                 'clinic_id' => 1, // Assuming the clinic ID is 1
                 'doctor_id' => 1,
-                'appointment_datetime' => Carbon::now(),
+                'order' => 1,
+                'date' => Carbon::now()->toDateString(),
                 'type' => 'urgent',
                 'reason' => 'sss',
                 'status' => 'inProgress',

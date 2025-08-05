@@ -37,13 +37,13 @@
             {!! $errors->first('clinic_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
-            <label for="appointment_datetime" class="form-label">{{ __('Appointment Datetime') }}</label>
-            <input type="datetime-local" name="appointment_datetime"
-                class="form-control @error('appointment_datetime') is-invalid @enderror"
-                value="{{ old('appointment_datetime', $appointment?->appointment_datetime) }}"
-                id="appointment_datetime" placeholder="Appointment Datetime">
+            <label for="date" class="form-label">{{ __('Date') }}</label>
+            <input type="date" name="date"
+                class="form-control @error('date') is-invalid @enderror"
+                value="{{ old('date',  $appointment?->date?->format('Y-m-d')) }}"
+                id="date" placeholder="Date">
             {!! $errors->first(
-                'appointment_datetime',
+                'date',
                 '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>',
             ) !!}
         </div>

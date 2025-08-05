@@ -13,7 +13,8 @@ return new class extends Migration
             $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('doctor_id');
             $table->unsignedBigInteger('clinic_id');
-            $table->dateTime('appointment_datetime');
+            $table->integer('order')->nullable();
+            $table->date('date');
             $table->enum('type', ['urgent', 'normal', 'repeated'])->default('normal');
             $table->text('reason')->nullable();
             $table->softDeletes();

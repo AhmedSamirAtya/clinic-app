@@ -19,7 +19,8 @@ class AppointmentController extends Controller
     {
         $appointment = new Appointment();
         $clinic = Assistant::find(Auth::guard('assistant')->id())->clinic;
-        return view('assistant.appointment.create', compact('appointment', 'clinic'));
+        $doctors = $clinic->doctors;
+        return view('assistant.appointment.create', compact('appointment', 'clinic', 'doctors'));
     }
 
     public function storeAppointment(AppointmentRequest $request)
@@ -58,7 +59,7 @@ class AppointmentController extends Controller
     public function destroy($id)
     {
         Appointment::find($id)->delete();
-        return redirect()->route('assistant.appointments.index')
+        return redirect()->route('assistants.appointments.get-appointments')
             ->with('success', 'Appointment deleted successfully');
     }
 
@@ -71,7 +72,6 @@ class AppointmentController extends Controller
         $clinicDoctor = ClinicDoctor::where('doctor_id', $doctor->id)
                                     ->where('clinic_id', $clinicId)
                                     ->first();
-
         // 3. Handle the case where no schedule is found.
         if (!$clinicDoctor) {
             return response()->json([

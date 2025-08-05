@@ -20,8 +20,7 @@ Route::prefix('assistants')->name('assistants.')->group(function () {
             Route::post('/{appointment}/update', [AppointmentController::class, 'updateAppointment'])->name('update-appointment');
             Route::post('/{appointment}/update', [AppointmentController::class, 'updateAppointment'])->name('update-appointment');
             Route::delete('/{appointment}', [AppointmentController::class, 'destroy'])->name('destroy-appointment');
-            Route::get('/get-doctor-schedule/{doctor}', [AppointmentController::class, 'getDoctorSchedule'])
-    ->name('assistants.get_doctor_schedule');
+            Route::get('/get-doctor-schedule/{doctor}', [AppointmentController::class, 'getDoctorSchedule'])->name('assistants.appointments.get-doctor-schedule');
         });
     });
     Route::middleware('RedirectIfAuthenticated:assistant')->group(function () {

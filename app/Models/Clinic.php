@@ -56,4 +56,14 @@ class Clinic extends Model
     {
         return $this->hasMany(\App\Models\Location::class);
     }
+
+    public function doctors()
+{
+    return $this->belongsToMany(
+        \App\Models\Doctor::class,           // Related Model
+        'clinic_doctor',                    // Pivot table name
+        'clinic_id',                         // FK in pivot pointing to this model (clinic)
+        'doctor_id'                          // FK in pivot pointing to Doctor
+    );
+}
 }

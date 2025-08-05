@@ -25,7 +25,7 @@ class AppointmentRequest extends FormRequest
 			'clinic_id' => 'required|integer',
             'patient_id' => 'required|integer',
 			'doctor_id' => 'required|integer',
-			'appointment_datetime' => 'required',
+			'date' => 'required',
         ];
     }
 }

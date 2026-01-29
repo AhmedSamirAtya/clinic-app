@@ -36,13 +36,11 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-
                                         <th>Name</th>
                                         <th>Specialization</th>
                                         <th>Date Of Birth</th>
                                         <th>Phone Number</th>
                                         <th>Email</th>
-
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -50,13 +48,21 @@
                                     @foreach ($doctors as $doctor)
                                         <tr>
                                             <td>{{ $doctor->id }}</td>
-
                                             <td>{{ $doctor->name }}</td>
-                                            <td>{{ $doctor->specialization }}</td>
+                                            <td>
+                                                @if ($doctor->specializations->isNotEmpty())
+                                                    <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+                                                        @foreach ($doctor->specializations as $spec)
+                                                            <li>- {{ $spec->name }}</li> {{-- or whatever field holds the name --}}
+                                                        @endforeach
+                                                    </ul>
+                                                @else
+                                                    <em>{{ __('admin.no_specializations') }}</em>
+                                                @endif
+                                            </td>
                                             <td>{{ $doctor->date_of_birth }}</td>
                                             <td>{{ $doctor->phone_number }}</td>
                                             <td>{{ $doctor->email }}</td>
-
                                             <td>
                                                 <form action="{{ route('doctors.destroy', $doctor->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "

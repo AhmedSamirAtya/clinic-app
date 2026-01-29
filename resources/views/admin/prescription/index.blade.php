@@ -49,8 +49,8 @@
                                         <tr>
                                             <td>{{ $prescription->id }}</td>
                                             <td>{{ $prescription->appointment_id }}</td>
-                                            <td>{{ $prescription->appointment->patient->name }}</td>
-                                            <td>{{ $prescription->appointment->doctor->name }}</td>
+                                            <td>{{ $prescription->appointment?->patient?->name }}</td>
+                                            <td>{{ $prescription->appointment?->doctor?->name }}</td>
                                             <td>{{ $prescription->diagnosis }}</td>
                                             <td>
                                                 <ul>

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Web\Admin\DoctorController;
+use App\Http\Controllers\Web\Doctor\DoctorController;
 use App\Http\Controllers\Web\Doctor\Auth\DoctorLoginController as AuthDoctorLoginController;
 use Illuminate\Support\Facades\Route;
 

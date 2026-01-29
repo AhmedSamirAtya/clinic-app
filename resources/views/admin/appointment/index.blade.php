@@ -42,6 +42,7 @@
                                         <th>Date</th>
                                         <th>Order</th>
                                         <th>Type</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -55,6 +56,7 @@
                                             <td>{{ $appointment->date?->format('Y-m-d') }}</td>
                                             <td>{{ $appointment->order }}</td>
                                             <td>{{ $appointment->type }}</td>
+                                            <td>{{ $appointment->status }}</td>
                                             <td>
                                                 <form action="{{ route('appointments.destroy', $appointment->id) }}"
                                                     method="POST">

@@ -10,7 +10,7 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        $doctors = Doctor::paginate();
+        $doctors = Doctor::with('specializations')->paginate();
         return view('admin.doctor.index', compact('doctors'))
             ->with('i', (request()->input('page', 1) - 1) * $doctors->perPage());
     }

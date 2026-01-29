@@ -60,6 +60,18 @@
             </div>
         </div>
         <div class="form-group mb-2 mb20">
+            <div class="form-group">
+                <label for="type" class="form-label">{{ __('Status') }}</label>
+                <select class="form-control" title="Status" id="status" name="status">
+                    @foreach ($appointmentstatuses as $status)
+                        <option value="{{ $status }}" @if ($status == $appointment->status) selected @endif>
+                            {{ $status }}</option>
+                    @endforeach
+                </select>
+                {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
+        </div>
+        <div class="form-group mb-2 mb20">
             <label for="reason" class="form-label">{{ __('Reason') }}</label>
             <input type="text" name="reason" class="form-control @error('reason') is-invalid @enderror"
                 value="{{ old('reason', $appointment->reason) }}" id="reason" placeholder="reason">
